@@ -1,0 +1,425 @@
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import url(https://fonts.googleapis.com/css?family=Bree+Serif);
+
+$body-font: 'Open Sans', sans-serif;
+$header-font: 'Bree Serif', 'serif';
+$base-color: #FFFFFF;
+$scondary-color: #2461A8;
+$base-contrast: #151515;
+$box-shadow-color: #666666;
+$bright-accent: #F9CF00;
+$bright-accent-hover: #ffd815;
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+:root {
+    font-size: 16px;
+}
+
+%no-margin-or-padding {
+    margin: 0;
+	padding: 0;  
+}
+
+%bright-action {
+    background: #F9CF00;
+    color: #151515;
+}
+
+body {
+    @extend %no-margin-or-padding;
+    background: $base-color;
+    color: $base-contrast;
+    font-family: $body-font;
+	font-size:16px;
+	line-height: 1.5;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+      
+main {
+    flex: 1 0 auto;
+    flex-grow: 1;
+}
+
+
+h1 {
+	font-size: 2rem;
+	font-family: $header-font;
+}
+
+h2 {
+	font-size: 1.8rem;
+	font-family: $header-font;
+}
+
+h3 {
+    font-size: 1.6rem;
+    font-family: $header-font;
+}
+
+h4 {
+    font-size: 1.4rem;
+    font-family: $header-font;
+}
+
+h4 {
+    font-size: 1.2rem;
+    font-family: $header-font;
+}
+
+.container {
+    margin: 0 auto;
+    width: 85%;
+}
+
+p {
+}
+
+.row {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.toggle,
+[id^=drop] {
+	display: none;
+}
+
+nav { 
+    @extend %no-margin-or-padding;
+    background-color: #4484CE;
+    z-index: 2;
+    font-size:22px;
+	line-height: 32px;
+}
+
+.logo {
+    color: $base-color;
+    font-family: $header-font;
+	display: block;
+	padding: 0 30px;
+    float: left;
+    font-size:25px;
+	line-height: 60px;
+}
+
+nav:after {
+	content:"";
+	display:table;
+	clear:both;
+}
+
+nav ul {
+    @extend %no-margin-or-padding;
+	float: right;
+	list-style: none;
+	position: relative;
+	}
+	
+nav ul li {
+	margin: 0px;
+	display:inline-block;
+	float: left;
+	background-color: #4484CE;
+	}
+
+nav a{
+	display:block;
+	padding:14px 20px;	
+	color:$base-color;
+	font-size:17px;
+	text-decoration:none;
+}
+
+nav ul li ul li:hover { background: $scondary-color; }
+
+nav a:hover { 
+	background-color: $scondary-color; 
+}
+
+nav ul ul {
+	display: none;
+	position: absolute; 
+	top: 60px; 
+}
+	
+nav ul li:hover > ul {
+	display:inherit;
+}
+	
+nav ul ul li {
+	width:200px;
+	float:none;
+	display:list-item;
+	position: relative;
+}
+
+
+nav ul ul ul li {
+	position: relative;
+	top:-60px;
+	left:200px; 
+}
+
+	
+li > a:after { content:  ' +'; }
+li > a:only-child:after { content: ''; }
+
+main a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #2461A8;
+}
+
+main a:hover {
+    text-decoration: none;
+    font-weight: bold;
+    color: #3e82cf;
+
+}
+
+.splash {
+    background-image: image-url('playerbackground.png');
+    background-size: cover;
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.splashtext {
+    color: $base-color;
+    text-shadow: 2px 2px $base-contrast;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    margin: 2rem 0 2rem 0;
+    padding: 1.5rem;
+}
+
+.ma {
+    margin: auto;
+}
+
+.green-box {
+background: rgb(127, 175, 127);
+padding: 1rem;
+margin: 1rem;
+box-shadow: 2px 1px 2px $box-shadow-color;
+}
+
+.red-box {
+background: rgb(255, 228, 152);
+padding: 1rem;
+margin: 1px;
+box-shadow: 2px 1px 2px $box-shadow-color;
+}
+
+.userform {
+    box-shadow: 2px 2px 2px $box-shadow-color;
+    margin: 2rem auto 2rem auto;
+    padding: 1.5rem;
+    background: $base-color;
+    input, select {
+        width: 100%;
+        padding: 0.6rem;
+        margin: 0.4rem 0 1.2rem 0;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        font-family: $body-font;
+        font-size: 1rem;
+    }
+
+    #user_remember_me {
+        width: 15px;
+        border: 1px solid black;
+    }
+
+    input[type=submit] {
+        @extend %bright-action;
+        padding: 1rem;
+        font-size: 1.2rem;
+        font-weight: bold;
+        border: none;
+        box-shadow: 1px 1px 1px $box-shadow-color;
+        cursor: pointer;
+    }
+
+    input[type=submit]:hover {
+        background-color: $bright-accent-hover;
+    }
+
+}
+
+footer {
+    background: $base-contrast;
+    color: $base-color;
+    text-align: center;
+}
+
+
+footer ul {
+	padding:0;
+	margin:0;
+	list-style: none;
+	position: relative;
+}
+	
+footer ul li {
+	margin: 0px;
+	display:inline-block;
+}
+
+footer a{
+	display:block;
+	padding:10px 15px;	
+	color:$base-color;
+	font-size:17px;
+	text-decoration:none;
+}
+
+/* Media Queries
+--------------------------------------------- */
+@media all and (min-width: 769px) {
+    .l-12 {
+        width: 100%;
+    }
+
+    .l-6 {
+        width: 50%;
+    }
+}
+@media all and (max-width : 768px) {
+
+	.logo {
+		display: block;
+		padding: 0;
+		width: 100%;
+		text-align: center;
+		float: none;
+	}
+
+	nav {
+        margin: 0;
+	}
+
+    nav ul {
+        width: 100%;
+        float: none;
+    }
+	.toggle + a,
+	.menu {
+		display: none;
+	}
+
+	.toggle {
+		display: block;
+		background-color: #4484CE;
+		padding:14px 20px;	
+		color:$base-color;
+		font-size:17px;
+		text-decoration:none;
+		border:none;
+	}
+
+	.toggle:hover {
+		background-color: $scondary-color;
+	}
+
+	[id^=drop]:checked + ul {
+		display: block;
+	}
+
+	nav ul li {
+		display: block;
+		width: 100%;
+		}
+
+	nav ul ul .toggle,
+	nav ul ul a {
+		padding: 0 40px;
+	}
+
+	nav ul ul ul a {
+		padding: 0 80px;
+	}
+
+	nav a:hover,
+ 	nav ul ul ul a {
+		background-color: $scondary-color;
+	}
+  
+	nav ul li ul li .toggle,
+	nav ul ul a,
+  nav ul ul ul a{
+		padding:14px 20px;	
+		color:$base-color;
+		font-size:17px; 
+	}
+  
+  
+	nav ul li ul li .toggle,
+	nav ul ul a {
+		background-color: #212121; 
+	}
+
+	nav ul ul {
+		float: none;
+		position:static;
+		color: $base-color;
+	}
+		
+	nav ul ul li:hover > ul,
+	nav ul li:hover > ul {
+		display: none;
+	}
+		
+	nav ul ul li {
+		display: block;
+		width: 100%;
+	}
+
+	nav ul ul ul li {
+		position: static;
+	}
+    .container {
+        width: 90%;
+    }
+    
+    .splashtext {
+        align-items: center;
+        padding: 0.2rem;
+        margin: 0.2rem;
+    }
+
+    .m-12 {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+@media all and (max-width : 330px) {
+
+	nav ul li {
+		display:block;
+		width: 94%;
+    }
+    
+    .container {
+        width: 100%;
+    }
+
+}

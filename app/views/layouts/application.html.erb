@@ -6,34 +6,61 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.12/js/all.js" integrity="sha384-Voup2lBiiyZYkRto2XWqbzxHXwzcm4A5RfdfG6466bu5LqjwwrjXCMBQBLMWh7qR" crossorigin="anonymous"></script>
+
 
   </head>
 
   <body>
-   <nav>
-    <div class="nav-wrapper teal">
-      <a href="/" class="brand-logo">Printstagram</a>
-     <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <nav>
+        <div class="logo"><i class="fas fa-hand-peace"></i> Teamplayers</div>
 
-<% if user_signed_in? %>
-  <li>Logged in as <strong><%= current_user.email %></strong>.</li>
-  <li><%= link_to 'Edit profile', edit_user_registration_path %></li>
-  <li><%= link_to "Logout", destroy_user_session_path, method: :delete  %></li>
-<% else %>
-  <li><%= link_to "Sign up", new_user_registration_path  %></li>
-  <li><%= link_to "Login", new_user_session_path  %></li>
-<% end %>
-      </ul>
-    </div>
-  </nav>
-  
-  
+        <label for="drop" class="toggle">Menu</label>
+        <input type="checkbox" id="drop" />
+            <ul class="menu">
+                <li><a href="/">Home</a></li>
+              <% if user_signed_in? %>
+
+                <li>
+                  <label for="drop-1" class="toggle">Account +</label>
+                  <a href="#">Account</a>
+                  <input type="checkbox" id="drop-1"/>
+                  <ul>
+                    <li><a href="#">View Profile</a></li>
+                    <li><a href="#">Edit Profile</a></li>
+                    <li><%= link_to 'Change Password', edit_user_registration_path %></li>
+                    <li><%= link_to "Logout", destroy_user_session_path, method: :delete  %></li>
+                  </ul> 
+
+                </li>
+                <li>
+                <!-- First Tier Drop Down -->
+                <label for="drop-2" class="toggle">Teams +</label>
+                <a href="#">Teams</a>
+                <input type="checkbox" id="drop-2"/>
+                <ul>
+                    <li><a href="#">My Teams</a></li>
+                    <li><a href="#">Create New Team</a></li>
+                </ul>
+                </li>
+                <li><a href="#">Find Players</a></li>
+                <li><a href="#">Find Teams</a></li>
+
+                <% else %>
+                  <li><%= link_to "Sign up", new_user_registration_path  %></li>
+                  <li><%= link_to "Login", new_user_session_path  %></li>
+                <% end %>
+            </ul>
+        </nav>
+
+
+
+
 <% if notice %>
-  <p class="card-panel green lighten-4 green-text text-darken-4"><%= notice %></p>
+  <p class="green-box"><%= notice %></p>
 <% end %>
 <% if alert %>
-  <p class="card-panel red lighten-4 red-text text-darken-4"><%= alert %></p>
+  <p class="red-box"><%= alert %></p>
 <% end %>
 
   <main>
@@ -44,31 +71,18 @@
     </div>
   </main>
 
-   <footer class="page-footer teal">
-          <div class="container">
-            <div class="row">
-              <div class="col l6 s12">
-                <h5 class="white-text">Footer Content</h5>
-                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-              </div>
-              <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Links</h5>
-                <ul>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="footer-copyright">
-            <div class="container">
-            © 2014 Copyright Text
-            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
-            </div>
-          </div>
-        </footer>
+   <footer>
+      <ul>
+        <li><a class="grey-text text-lighten-3" href="#!">About</a></li>
+        <li><a class="grey-text text-lighten-3" href="#!">Contact</a></li>
+        <li><a class="grey-text text-lighten-3" href="#!">FAQ</a></li>
+        <li><a class="grey-text text-lighten-3" href="#!">Terms</a></li>
+      </ul>
+   
+      <div>
+      <p>© 2018 Copyright Text</p>
+      </div>
+  </footer>
 
-  </body>
+  </body> 
 </html>
