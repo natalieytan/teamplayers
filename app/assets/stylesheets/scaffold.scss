@@ -8,6 +8,7 @@ $base-color: #FFFFFF;
 $scondary-color: #2461A8;
 $base-contrast: #151515;
 $box-shadow-color: #666666;
+$light-shadow-color: #CCCCCC;
 $bright-accent: #F9CF00;
 $bright-accent-hover: #ffd815;
 
@@ -228,7 +229,54 @@ margin: 2px;
 box-shadow: 2px 1px 2px $box-shadow-color;
 }
 
-.userform {
+.filebox {
+	display: flex;
+	wrap: nowrap;
+	flex-direction: row;
+	justify-content: center;
+	margin-bottom: 1.5rem;
+}
+
+.uploader {
+	padding: 0.5rem;
+
+}
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+}
+.inputfile + label {
+	padding: 1rem;
+	color: $scondary-color;
+	border: 1px solid $scondary-color;
+	font-size: 1.2rem;
+	font-weight: bold;
+	background-color: $base-color;
+	box-shadow: 1px 1px 1px $box-shadow-color;
+	display: block;
+	text-align: center;
+	cursor: pointer;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+	background-color: $scondary-color;
+	color: $base-color;
+}
+
+.file-info {
+	border-bottom: 1px solid $light-shadow-color;
+	display: flex;
+	align-items: flex-end;
+	justify-content: flex-start;
+	flex-grow: 1;
+	min-width: 200px;
+	padding-left: 1.2rem;
+}
+
+.form, .userform {
     box-shadow: 2px 2px 2px $box-shadow-color;
     margin: 2rem auto 2rem auto;
     padding: 1.5rem;
@@ -237,7 +285,9 @@ box-shadow: 2px 1px 2px $box-shadow-color;
         width: 100%;
         padding: 0.6rem;
         margin: 0.4rem 0 1.2rem 0;
-        border: 1px solid #ccc;
+		border: 1px solid #ccc;
+		background: $base-color;
+		color: $base-contrast;
         box-sizing: border-box;
         font-family: $body-font;
         font-size: 1rem;
@@ -264,6 +314,14 @@ box-shadow: 2px 1px 2px $box-shadow-color;
 
 }
 
+.rounded {
+	border-radius: 50%;
+	width: 250px;
+	height: 250px;
+	overflow: hidden;
+	border: $base-contrast 2px solid;
+	box-shadow: 2px 2px 2px $box-shadow-color;
+}
 footer {
     background: $base-contrast;
     color: $base-color;

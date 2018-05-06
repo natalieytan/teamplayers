@@ -17,6 +17,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'rails_admin', '~> 1.3'
+gem 'aws-sdk', '~> 3.0', '>= 3.0.1'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -30,6 +31,7 @@ group :test do
   gem 'shoulda-matchers', '~> 3.1', '>= 3.1.2'
   gem 'rspec-rails', '~> 3.7', '>= 3.7.2'
   gem 'capybara', '~> 3.0', '>= 3.0.2'
+  gem 'shrine-memory'
 end
 
 group :development do

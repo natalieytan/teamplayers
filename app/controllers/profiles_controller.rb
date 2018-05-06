@@ -27,13 +27,11 @@ class ProfilesController < ApplicationController
   def create
     @profile = Profile.new(profile_params)
     @profile.user = current_user
-    respond_to do |format|
-      if @profile.save
-        flash.now[:notice] = "Profile was successfully created."
-        redirect_to profile_path
-      else
-        render :edit
-      end
+    if @profile.save
+      flash.now[:notice] = "Profile was successfully created."
+      redirect_to profile_path
+    else
+      render :edit
     end
   end
 
@@ -56,6 +54,6 @@ class ProfilesController < ApplicationController
     end
 
     def profile_params
-      params.require(:profile).permit(:first_name, :last_name, :birth_date, :gender, :image_data)
+      params.require(:profile).permit(:first_name, :last_name, :birth_date, :gender, :image)
     end
 end

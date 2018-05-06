@@ -1,17 +1,11 @@
-<p>
-  <strong>First name:</strong>
-  <%= @profile.first_name %>
-</p>
+<div class="rounded">
+ <%= image_tag @profile.image_url(:square) %>
+</div>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @profile.last_name %>
-</p>
+<h3>
+  <%= @profile.full_name %>
+</h3>
 
-<p>
-  <strong>Birth date:</strong>
-  <%= @profile.birth_date %>
-</p>
 
 <p>
   <strong>Gender:</strong>
@@ -19,6 +13,3 @@
 </p>
 
 <p>
-  <strong>Image data:</strong>
-  <%= @profile.image_data %>
-</p>
