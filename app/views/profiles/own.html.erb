@@ -1,4 +1,4 @@
-<div class="profilecard">
+<div class="card centretext">
 <h2>Your Profile</h2>
 <div class="rounded">
  <%= image_tag @profile.image_url(:square) %>
@@ -30,4 +30,36 @@
 
 <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?center=#{@profile.latitude},#{@profile.longitude}&zoom=13&scale=1&size=600x300&maptype=roadmap&key=AIzaSyC_XGX34wBaJcGjRQ1PNHoJMSRqAheg7XU&format=jpg&visual_refresh=true", class: "map" %>
 
+<h2> Interests </h2>
+<table>
+<thead>
+<th>
+Sport
+</th>
+<th colspan="2">
+Skill Level (self-rated)
+</th>
+
+</thead>
+
+<tbody>
+<% @interests.each do |interest| %>
+<tr>
+<td>
+<%= interest.sport.title_name %>
+</td>
+<td>
+<%= interest.skilltitle %>
+</td>
+<td class="stars">
+<% interest.skillstars.times do %>
+<%= fa_icon "star" %>
+<% end %>
+</td>
+
+</tr>
+<% end %>
+</tbody>
+</table>
 </div>
+

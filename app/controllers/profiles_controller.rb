@@ -10,6 +10,7 @@ class ProfilesController < ApplicationController
   # Get /profile
   def own
     @profile = current_user.profile
+    @interests = current_user.interests
     if @profile.nil?
       flash[:alert] = "You do not have a profile yet. Please create one!"
       redirect_to profile_edit_path

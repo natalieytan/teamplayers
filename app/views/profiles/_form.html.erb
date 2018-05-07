@@ -21,7 +21,7 @@
     <div class="uploader">
       <%= form.hidden_field :image, value: profile.cached_image_data %>
       <%= form.file_field :image, accept: 'image/jpeg,image/jpg,image/gif,image/png', id: :profile_image, class: "inputfile" %>
-      <label for="profile_image"><i class="fas fa-upload"></i> Upload Profile Picture</label>
+      <label for="profile_image"><%= fa_icon "upload" %> Upload Profile Picture</label>
       </div>
         <div class="file-info"></div>
   </div>

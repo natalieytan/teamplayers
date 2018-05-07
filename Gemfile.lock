@@ -841,6 +841,7 @@ DEPENDENCIES
   devise (~> 4.4, >= 4.4.3)
   dotenv-rails (~> 2.4)
   factory_bot_rails (~> 4.0)
+  font-awesome-rails
   geocoder (~> 1.4, >= 1.4.7)
   image_processing (~> 1.0)
   jbuilder (~> 2.5)

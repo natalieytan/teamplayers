@@ -1,0 +1,21 @@
+<%= form_with(model: interest, local: true, class: "interestform") do |form| %>
+  <% if interest.errors.any? %>
+    <div id="error_explanation">
+      <h4><%= pluralize(interest.errors.count, "error") %> prohibited this interest from being saved:</h4>
+
+      <ul>  
+      <% interest.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <%= form.label :sport, class:"required" %>
+    <%= form.collection_select :sport_id, Sport.order('name ASC'), :id, :title_name, :include_blank => true,  required: true %>
+
+    <%= form.label :skill, class:"required"  %><br>
+    <%= form.select :skill, Interest.skills.map { |k, v| ["#{v.to_s}. #{k.humanize}", k]}, :include_blank => true, class: "styled-select" %>
+
+    <%= form.submit submittext %>
+<% end %>

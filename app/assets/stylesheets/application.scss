@@ -1,6 +1,7 @@
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 @import url(https://fonts.googleapis.com/css?family=Bree+Serif);
+@import "font-awesome";
 
 $body-font: 'Open Sans', sans-serif;
 $header-font: 'Bree Serif', 'serif';
@@ -52,29 +53,33 @@ main {
 
 
 h1 {
+	text-align: center;
 	font-size: 2rem;
 	font-family: $header-font;
+	margin: 1.5rem;
 }
 
 h2 {
+	text-align: center;
 	font-size: 1.8rem;
 	font-family: $header-font;
+	margin: 1.5rem;
 }
 
 h3 {
+	text-align: center;
     font-size: 1.6rem;
-    font-family: $header-font;
+	font-family: $header-font;
+	margin: 1.5rem;
 }
 
 h4 {
+	text-align: center;
     font-size: 1.4rem;
-    font-family: $header-font;
+	font-family: $header-font;
+	margin: 1.5rem;
 }
 
-h4 {
-    font-size: 1.2rem;
-    font-family: $header-font;
-}
 
 .container {
     margin: 0 auto;
@@ -218,8 +223,9 @@ main a:hover {
 
 .box {
 	padding: 1rem;
-	margin: 2px;
+	margin: 1rem auto 1rem auto ;
 	box-shadow: 2px 1px 2px $box-shadow-color;
+	width: 95%;
 }
 
 .green {
@@ -302,17 +308,56 @@ label.required:after{
 	background: $base-color;
 }
 
-.profilecard {
+.card {
 	@extend %bigcard;
+	
+}
+
+.centretext {
 	text-align: center;
 }
 
+input[type=submit] {
+	@extend %bright-action;
+	padding: 1rem;
+	font-size: 1.2rem;
+	font-weight: bold;
+	border: none;
+	box-shadow: 1px 1px 1px $box-shadow-color;
+	cursor: pointer;
+}
+
+input[type=submit]:hover {
+	background-color: $bright-accent-hover;
+}
+
+input, textarea, select {
+	padding: 0.6rem;
+	margin: 0.4rem 0 1.6rem 0;
+	border: 1px solid #ccc;
+	background: $base-color;
+	color: $base-contrast;
+	box-sizing: border-box;
+	font-family: $body-font;
+	font-size: 1rem;
+}
+
+.interestform {
+	label {
+		font-size: 1.1rem;
+		font-weight: bold;
+	}
+
+	select {
+		width: 100%;
+	}
+
+
+}
 .form, .userform {
 	@extend %bigcard;
 
-	h2 {
-		text-align: center;
-	}
+
 	label {
 		font-size: 1.1rem;
 		font-weight: bold;
@@ -320,35 +365,14 @@ label.required:after{
 	input, textarea {
 		width: 100%;
 	}
-    input, textarea, select {
-        padding: 0.6rem;
-        margin: 0.4rem 0 1.6rem 0;
-		border: 1px solid #ccc;
-		background: $base-color;
-		color: $base-contrast;
-        box-sizing: border-box;
-        font-family: $body-font;
-		font-size: 1rem;
-    }
+
 
     #user_remember_me {
         width: 15px;
         border: 1px solid black;
     }
 
-    input[type=submit] {
-        @extend %bright-action;
-        padding: 1rem;
-        font-size: 1.2rem;
-        font-weight: bold;
-        border: none;
-        box-shadow: 1px 1px 1px $box-shadow-color;
-        cursor: pointer;
-    }
 
-    input[type=submit]:hover {
-        background-color: $bright-accent-hover;
-    }
 
 }
 
@@ -380,6 +404,34 @@ label.required:after{
 	width: 100%;
 	max-width: 650px;
 }
+
+table {
+    border-collapse: collapse;
+	width: 100%;
+	text-align: center;
+	
+	td, th {
+		border: 1px solid #ddd;
+		padding: 8px;
+	}
+
+	th {
+		padding-top: 12px;
+		padding-bottom: 12px;
+		text-align: center;
+		background-color: $scondary-color;
+		color: $base-color;
+	}
+
+	tr:nth-child(even){background-color: #f2f2f2;}
+
+	tr:hover {background-color: #ddd;}
+}
+
+.stars {
+	color: $bright-accent;
+}
+
 footer {
     background: $base-contrast;
     color: $base-color;

@@ -13,7 +13,7 @@
 
   <body>
         <nav>
-        <div class="logo"><i class="fas fa-hand-peace"></i> Teamplayers</div>
+        <div class="logo">Teamplayers</div>
 
         <label for="drop" class="toggle">Menu</label>
         <input type="checkbox" id="drop" />
@@ -28,6 +28,7 @@
                   <ul>
                     <li><%= link_to 'View Profile', profile_path %></li>
                     <li><%= link_to 'Edit Profile', profile_edit_path %></li>
+                    <li><%= link_to 'Edit Interests', interests_path %></li>
                     <li><%= link_to 'Change Password', edit_user_registration_path %></li>
                     <li><%= link_to "Logout", destroy_user_session_path, method: :delete  %></li>
                   </ul> 

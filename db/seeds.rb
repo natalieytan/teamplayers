@@ -5,3 +5,17 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# Some sports to populate the database
+sports = Sport.create!([
+  {name: "soccer" }, 
+  {name: "futsal"}, 
+  {name: "netball"}, 
+  {name: "basketball"}, 
+  {name: "rugby"},
+  {name: "volleyball"}, 
+  {name: "dodgeball"}, 
+  {name: "cricket"},
+  {name: "football"}, 
+  {name: "volleyball"}
+  ])

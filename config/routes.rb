@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   get '/profile/edit', to: 'profiles#edit'
   patch '/profile', to: 'profiles#update'
   resources :profiles, only: [:create, :show]
+  resources :interests
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
