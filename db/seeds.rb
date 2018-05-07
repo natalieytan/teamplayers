@@ -17,5 +17,4 @@ sports = Sport.create!([
   {name: "dodgeball"}, 
   {name: "cricket"},
   {name: "football"}, 
-  {name: "volleyball"}
   ])
