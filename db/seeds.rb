@@ -47,9 +47,9 @@ require 'csv'
 # ])
 
 # seed some organisations
-organisations = CSV.open("db/organisations.csv", headers: :first_row).map(&:to_h)
-Organisation.create!(organisations)
+# organisations = CSV.open("db/organisations.csv", headers: :first_row).map(&:to_h)
+# Organisation.create!(organisations)
 
-# seed some data for futsalHQ
-futsalhq = CSV.open("db/futsalhq.csv", headers: :first_row).map(&:to_h)
-League.create!(futsalhq)
+# # seed some data for futsalHQ
+# futsalhq = CSV.open("db/futsalhq.csv", headers: :first_row).map(&:to_h)
+# League.create!(futsalhq)
