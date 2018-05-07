@@ -18,3 +18,27 @@
 #   {name: "cricket"},
 #   {name: "football"}, 
 # ])
+
+days = Day.create!([
+  {name: "Monday"},
+  {name: "Tuesday"},
+  {name: "Wednesday"},
+  {name: "Thursday"},
+  {name: "Friday"},
+  {name: "Saturday"},
+  {name: "Sunday"}
+])
+
+genders = Gender.create!([
+  {name: "Male"},
+  {name: "Female"},
+  {name: "Mixed"}
+])
+
+skill = Skill.create!([
+  {name: "Beginner"},
+  {name: "Casual"},
+  {name: "Intermediate"},
+  {name: "Advanced"},
+  {name: "Professional"}
+])
