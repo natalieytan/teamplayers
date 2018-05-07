@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180507084020) do
+ActiveRecord::Schema.define(version: 20180507110002) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,10 +35,37 @@ ActiveRecord::Schema.define(version: 20180507084020) do
     t.index ["user_id"], name: "index_interests_on_user_id"
   end
 
+  create_table "leagues", force: :cascade do |t|
+    t.bigint "sport_id"
+    t.bigint "organisation_id"
+    t.string "name"
+    t.bigint "gender_id"
+    t.bigint "skill_id"
+    t.bigint "day_id"
+    t.string "street_number"
+    t.string "route"
+    t.string "locality"
+    t.string "administrative_area"
+    t.string "postal_code"
+    t.string "country"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.decimal "latitude"
+    t.decimal "longitude"
+    t.index ["day_id"], name: "index_leagues_on_day_id"
+    t.index ["gender_id"], name: "index_leagues_on_gender_id"
+    t.index ["organisation_id"], name: "index_leagues_on_organisation_id"
+    t.index ["skill_id"], name: "index_leagues_on_skill_id"
+    t.index ["sport_id"], name: "index_leagues_on_sport_id"
+  end
+
   create_table "organisations", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "website"
+    t.string "phone"
+    t.string "email"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -95,5 +122,10 @@ ActiveRecord::Schema.define(version: 20180507084020) do
 
   add_foreign_key "interests", "sports"
   add_foreign_key "interests", "users"
+  add_foreign_key "leagues", "days"
+  add_foreign_key "leagues", "genders"
+  add_foreign_key "leagues", "organisations"
+  add_foreign_key "leagues", "skills"
+  add_foreign_key "leagues", "sports"
   add_foreign_key "profiles", "users"
 end
