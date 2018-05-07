@@ -1,15 +1,33 @@
+<div class="profilecard">
+<h2>Your Profile</h2>
 <div class="rounded">
  <%= image_tag @profile.image_url(:square) %>
 </div>
-
 <h3>
   <%= @profile.full_name %>
 </h3>
 
 
 <p>
-  <strong>Gender:</strong>
-  <%= @profile.gender %>
+  <strong>About</strong>
+    <br/>
+  <%= @profile.description %>
 </p>
 
 <p>
+  <strong>Gender</strong>
+  <br/>
+  <%= @profile.gender.humanize %>
+</p>
+
+
+<p>
+  <strong>Preferred playing location</strong>
+  </br>
+  <%= @profile.playing_location %>
+</p>
+
+
+<%= image_tag "https://maps.googleapis.com/maps/api/staticmap?center=#{@profile.latitude},#{@profile.longitude}&zoom=13&scale=1&size=600x300&maptype=roadmap&key=AIzaSyC_XGX34wBaJcGjRQ1PNHoJMSRqAheg7XU&format=jpg&visual_refresh=true" %>
+
+</div>

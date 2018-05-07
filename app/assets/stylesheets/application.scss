@@ -5,6 +5,7 @@
 $body-font: 'Open Sans', sans-serif;
 $header-font: 'Bree Serif', 'serif';
 $base-color: #FFFFFF;
+$base-color-hover: #FCFCFC;
 $scondary-color: #2461A8;
 $base-contrast: #151515;
 $box-shadow-color: #666666;
@@ -81,11 +82,11 @@ h4 {
 }
 
 p {
+	margin: 1.5rem;
 }
 
 .row {
     width: 100%;
-    position: relative;
     display: flex;
     flex-wrap: wrap;
 }
@@ -215,23 +216,37 @@ main a:hover {
     margin: auto;
 }
 
-.green-box {
-background: rgb(127, 175, 127);
-padding: 1rem;
-margin: 2px;
-box-shadow: 2px 1px 2px $box-shadow-color;
+.box {
+	padding: 1rem;
+	margin: 2px;
+	box-shadow: 2px 1px 2px $box-shadow-color;
 }
 
-.red-box {
-background: rgb(255, 228, 152);
-padding: 1rem;
-margin: 2px;
-box-shadow: 2px 1px 2px $box-shadow-color;
+.green {
+	background: #7faf7f;
+
 }
 
+.red {
+	background: #ff9898;
+}
+
+
+#error_explanation {
+	h4 {
+		font-family: $body-font;
+	}
+	background: #ff9898;
+	margin: 0.4rem;
+	padding: 1.5rem;
+	box-shadow: 2px 1px 2px $box-shadow-color;
+	ul {
+		list-style-position: inside;
+	}
+}
 .filebox {
 	display: flex;
-	wrap: nowrap;
+	flex-wrap: nowrap;
 	flex-direction: row;
 	justify-content: center;
 	margin-bottom: 1.5rem;
@@ -249,9 +264,8 @@ box-shadow: 2px 1px 2px $box-shadow-color;
 }
 .inputfile + label {
 	padding: 1rem;
-	color: $scondary-color;
-	border: 1px solid $scondary-color;
-	font-size: 1.2rem;
+	color: $base-contrast;
+	font-size: 1.1rem;
 	font-weight: bold;
 	background-color: $base-color;
 	box-shadow: 1px 1px 1px $box-shadow-color;
@@ -262,8 +276,7 @@ box-shadow: 2px 1px 2px $box-shadow-color;
 
 .inputfile:focus + label,
 .inputfile + label:hover {
-	background-color: $scondary-color;
-	color: $base-color;
+	background-color: $base-color-hover;
 }
 
 .file-info {
@@ -276,21 +289,46 @@ box-shadow: 2px 1px 2px $box-shadow-color;
 	padding-left: 1.2rem;
 }
 
-.form, .userform {
-    box-shadow: 2px 2px 2px $box-shadow-color;
+label.required:after{
+	content: "*";
+	color: red;
+	font-size: 0.8rem;
+}
+
+%bigcard {
+	box-shadow: 2px 2px 2px $box-shadow-color;
     margin: 2rem auto 2rem auto;
     padding: 1.5rem;
-    background: $base-color;
-    input, select {
-        width: 100%;
+	background: $base-color;
+}
+
+.profilecard {
+	@extend %bigcard;
+	text-align: center;
+}
+
+.form, .userform {
+	@extend %bigcard;
+
+	h2 {
+		text-align: center;
+	}
+	label {
+		font-size: 1.1rem;
+		font-weight: bold;
+	}
+	input, textarea {
+		width: 100%;
+	}
+    input, textarea, select {
         padding: 0.6rem;
-        margin: 0.4rem 0 1.2rem 0;
+        margin: 0.4rem 0 1.6rem 0;
 		border: 1px solid #ccc;
 		background: $base-color;
 		color: $base-contrast;
         box-sizing: border-box;
         font-family: $body-font;
-        font-size: 1rem;
+		font-size: 1rem;
     }
 
     #user_remember_me {
@@ -314,10 +352,25 @@ box-shadow: 2px 1px 2px $box-shadow-color;
 
 }
 
+.address {
+	div {
+		margin: 0.5rem;
+	}
+	label {
+		color: $box-shadow-color;
+	}
+	input {
+		border: 0px;
+		border-bottom: 1px solid $light-shadow-color;
+		
+	}
+}
+
 .rounded {
 	border-radius: 50%;
 	width: 250px;
 	height: 250px;
+	margin: auto;
 	overflow: hidden;
 	border: $base-contrast 2px solid;
 	box-shadow: 2px 2px 2px $box-shadow-color;

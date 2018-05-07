@@ -38,13 +38,14 @@ class ProfilesController < ApplicationController
   # Updates User Profile
   # PATCH/PUT /profiles/1
   def update
-    @profile = Profile.where(user: current_user)
-      if @profile.update(profile_params)
-        redirect_to profile_path
-        flash[:notice] = 'Profile was successfully updated.'
-      else
-        render :edit
-      end
+    @profile = current_user.profile
+    if @profile.update(profile_params)
+      flash[:notice] = 'Profile was successfully updated.'
+      redirect_to profile_path
+    else
+      flash.now[:alert] = "Unable to update profile. Please check errors."
+      render :edit
+    end
   end
 
   private
@@ -54,6 +55,6 @@ class ProfilesController < ApplicationController
     end
 
     def profile_params
-      params.require(:profile).permit(:first_name, :last_name, :birth_date, :gender, :image)
+      params.require(:profile).permit(:first_name, :last_name, :birth_date, :gender, :image, :city, :state, :country, :description, :postcode)
     end
 end

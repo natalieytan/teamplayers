@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180505061306) do
+ActiveRecord::Schema.define(version: 20180507020954) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,10 @@ ActiveRecord::Schema.define(version: 20180505061306) do
     t.string "country"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "postcode"
+    t.string "description"
+    t.decimal "latitude"
+    t.decimal "longitude"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
