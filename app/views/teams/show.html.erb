@@ -1,0 +1,47 @@
+<div class="card centretext">
+<h2><%= @team.name %></h2>
+<div class="rounded">
+ <%= image_tag @team.image_url(:square) %>
+</div>
+
+<p>
+  <strong>Description</strong>
+    <br/>
+  <%= @team.description %>
+</p>
+
+<p>
+  <strong>Sport</strong>
+    <br/>
+  <%= @team.sport.name %>
+</p>
+
+<p>
+  <strong>Gender</strong>
+    <br/>
+  <%= @team.gender.name %>
+</p>
+
+<p>
+  <strong>Skill level</strong>
+    <br/>
+  <%= @team.skill.name %>
+</p>
+
+<p>
+  <strong>Location</strong>
+    <br/>
+  <%= @team.full_street_address %>
+</p>
+
+<%= image_tag "https://maps.googleapis.com/maps/api/staticmap?center=#{@team.latitude},#{@team.longitude}&zoom=13&scale=1&size=600x300&maptype=roadmap&key=AIzaSyC_XGX34wBaJcGjRQ1PNHoJMSRqAheg7XU&format=jpg&visual_refresh=true", class: "map" %>
+
+
+<p>
+  <strong>Founder</strong>
+    <br/>
+  <%= @team.owner.profile.full_name %>
+</p>
+
+</div>
+
