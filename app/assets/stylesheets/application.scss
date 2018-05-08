@@ -96,6 +96,8 @@ p {
     flex-wrap: wrap;
 }
 
+
+
 .toggle,
 [id^=drop] {
 	display: none;
@@ -251,11 +253,13 @@ main a:hover {
 	}
 }
 .filebox {
-	display: flex;
-	flex-wrap: nowrap;
-	flex-direction: row;
-	justify-content: center;
+	margin: auto;
 	margin-bottom: 1.5rem;
+}
+
+.field {
+	margin-bottom: 1.4rem;
+	padding: 0.2rem;
 }
 
 .uploader {
@@ -285,18 +289,26 @@ main a:hover {
 	background-color: $base-color-hover;
 }
 
+.formlabel {
+	text-align: right;
+	padding: 0.5rem 1.5rem 0 0;
+}
+
+.subtle-text {
+	font-size: 0.8rem;
+	color: $box-shadow-color;
+}
+
 .file-info {
 	border-bottom: 1px solid $light-shadow-color;
-	display: flex;
-	align-items: flex-end;
-	justify-content: flex-start;
-	flex-grow: 1;
-	min-width: 200px;
-	padding-left: 1.2rem;
+	text-align: center;
+	min-height: 1.8rem;
+	padding: 0.2rem;
+	font-size: 0.8rem;
 }
 
 label.required:after{
-	content: "*";
+	content: "\00a0*\00a0";
 	color: red;
 	font-size: 0.8rem;
 }
@@ -313,9 +325,12 @@ label.required:after{
 	
 }
 
-.centretext {
-	text-align: center;
+.fancyform {
+	select {
+		width: 100%;
+	}
 }
+
 
 input[type=submit] {
 	@extend %bright-action;
@@ -333,7 +348,7 @@ input[type=submit]:hover {
 
 input, textarea, select {
 	padding: 0.6rem;
-	margin: 0.4rem 0 1.6rem 0;
+	margin: 0.2rem 0 0.2rem 0;
 	border: 1px solid #ccc;
 	background: $base-color;
 	color: $base-contrast;
@@ -377,11 +392,13 @@ input, textarea, select {
 }
 
 .address {
+
 	div {
-		margin: 0.5rem;
+		padding: 0.4rem;
 	}
 	label {
 		color: $box-shadow-color;
+		font-size: 0.85rem;
 	}
 	input {
 		border: 0px;
@@ -390,6 +407,9 @@ input, textarea, select {
 	}
 }
 
+.centretext {
+	text-align: center;
+}
 .rounded {
 	border-radius: 50%;
 	width: 250px;
@@ -432,6 +452,11 @@ table {
 	color: $bright-accent;
 }
 
+.inputbox {
+	p {
+		margin: 0;
+	}
+}
 footer {
     background: $base-contrast;
     color: $base-color;
@@ -468,7 +493,17 @@ footer a{
 
     .l-6 {
         width: 50%;
-    }
+	}
+	
+	.l-3 {
+        width: 25%;
+        box-sizing: border-box;
+	}
+	
+	.l-9 {
+        width: 75%;
+        box-sizing: border-box;
+	}
 }
 @media all and (max-width : 768px) {
 	%bigcard {
@@ -578,10 +613,37 @@ footer a{
         margin: 0.2rem;
     }
 
+	.formlabel {
+		text-align: left;
+		
+	}
     .m-12 {
         width: 100%;
         box-sizing: border-box;
-    }
+	}
+
+	.m-9 {
+        width: 75%;
+        box-sizing: border-box;
+	}
+
+	.m-6 {
+		width: 50%;
+		box-sizing: border-box;
+
+	}
+
+	.m-3 {
+        width: 25%;
+        box-sizing: border-box;
+	}
+	
+	.address {
+		label {
+			font-size: 0.7rem;
+		}
+	}
+
 }
 
 @media all and (max-width : 330px) {

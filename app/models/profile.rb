@@ -18,6 +18,10 @@ class Profile < ApplicationRecord
     "#{city}, #{state} #{postcode} #{country}"
   end
 
+  def simple_location
+    "#{city}, #{state}, #{country}"
+  end
+
   def full_name
     "#{first_name} #{last_name}"
   end

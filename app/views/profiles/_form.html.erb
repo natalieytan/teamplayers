@@ -17,75 +17,110 @@
     </div>
   <% end %>
 
-    <div class="field filebox">
+    <div class="l-6 m-12 filebox">
     <div class="uploader">
       <%= form.hidden_field :image, value: profile.cached_image_data %>
       <%= form.file_field :image, accept: 'image/jpeg,image/jpg,image/gif,image/png', id: :profile_image, class: "inputfile" %>
       <label for="profile_image"><%= fa_icon "upload" %> Upload Profile Picture</label>
       </div>
-        <div class="file-info"></div>
-  </div>
+      
+      <div class="file-info"></div>
+    </div>
 
-  <div class="field">
+  <div class="field row">
+  <div class="l-3 m-12 formlabel">
     <%= form.label :first_name, class:"required" %>
+  </div>
+  <div class="l-9 m-12 inputbox">
     <%= form.text_field :first_name, id: :profile_first_name , required: true %>
   </div>
+  </div>
 
-  <div class="field">
+  <div class="field row">
+  <div class="l-3 m-12 formlabel">
     <%= form.label :last_name, class:"required" %>
+    </div>
+  <div class="l-9 m-12 inputbox">
     <%= form.text_field :last_name, id: :profile_last_name, required: true  %>
   </div>
-
-    <div class="field">
+  </div>
+  
+  <div class="field row">
+  <div class="l-3 m-12 formlabel">
     <%= form.label :last_name, "About yourself" %>
+      </div>
+  <div class="l-9 m-12 inputbox">
     <%= form.text_area :description, id: :profile_description %>
   </div>
+  </div>
 
-  <div class="field">
+  <div class="field row">
+  <div class="l-3 m-12 formlabel">
     <%= form.label :birth_date, class:"required"  %><br>
+        </div>
+  <div class="l-9 m-12 inputbox">
     <%= form.date_select :birth_date, id: :profile_birth_date, :prompt => {
 :day => 'Select day', :month => 'Select month', :year => 'Select year'
 }, :start_year => Time.now.year, :end_year => Time.now.year - 80, class: "styled-select", required: true  %>
   </div>
+  </div>
 
-  <div class="field">
-    <%= form.label :gender, class:"required"  %><br>
+  <div class="field row">
+  <div class="l-3 m-12 formlabel">
+    <%= form.label :gender, class:"required"  %>
+    </div>
+    <div class="l-9 m-12 inputbox">
+
     <%= form.select :gender, Profile.genders.keys.map { |w| [w.humanize, w]}, :include_blank => true, class: "styled-select" %>
   </div>
+  </div>  
 
-    <div id="locationField">
+  <div class="field row">
+  <div class="l-3 m-12 formlabel">
       <label for="autocomplete" class="required" >Preferred playing location</label>
+    </div>
+    <div class="l-9 m-12 inputbox" id="locationField">
       <input id="autocomplete" 
              onFocus="geolocate()" type="text"></input>
-    </div>
+             <p class="subtle-text"> Entering a location above autocompletes the details below.
+             </br> Alternatively, you may choose to edit the details below manually.</p>
 
   <div class="address">
-  <div class="row">
-    <div class="field">
-    <%= form.label :city %>
-    <%= form.text_field :city, id: "locality" %>
-  </div>
+    <div class="row">
+      <div class="l-6 m-12">
+      <%= form.label :city %>
+      <%= form.text_field :city, id: "locality" %>
+    </div>
 
-    <div class="field">
+    <div class="l-6 m-12">
     <%= form.label :postcode %>
     <%= form.text_field :postcode, id: "postal_code" %>
-  </div>
-
-    <div class="field">
+    </div>
+    </div>
+    <div class="row">
+      <div class="l-6 m-12">
     <%= form.label :state %>
     <%= form.text_field :state,  id: "administrative_area_level_1" %>
     </div>
-    <div class="field">
+      <div class="l-6 m-12">
       <%= form.label :country %>
       <%= form.text_field :country, id: "country" %>
     </div>
   </div>
-</div>
+</div>  
+    </div>
+
+
+        </div>
+
+
 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+
+
 
 <script type="text/javascript">
   $('#profile_image').bind('change', function() {
@@ -111,13 +146,6 @@
 
 
     <script>
-      // This example displays an address form, using the autocomplete feature
-      // of the Google Places API to help users fill in the information.
-
-      // This example requires the Places library. Include the libraries=places
-      // parameter when you first load the API. For example:
-      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
-
       var placeSearch, autocomplete;
       var componentForm = {
         locality: 'long_name',

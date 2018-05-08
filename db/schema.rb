@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180507110002) do
+ActiveRecord::Schema.define(version: 20180508012416) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,6 +99,32 @@ ActiveRecord::Schema.define(version: 20180507110002) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "teams", force: :cascade do |t|
+    t.bigint "owner_id"
+    t.bigint "sport_id"
+    t.bigint "skill_id"
+    t.bigint "gender_id"
+    t.bigint "day_id"
+    t.text "description"
+    t.string "street_number"
+    t.string "route"
+    t.string "locality"
+    t.string "administrative_area"
+    t.string "postal_code"
+    t.string "country"
+    t.decimal "latitude"
+    t.decimal "longitude"
+    t.text "image_data"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.index ["day_id"], name: "index_teams_on_day_id"
+    t.index ["gender_id"], name: "index_teams_on_gender_id"
+    t.index ["owner_id"], name: "index_teams_on_owner_id"
+    t.index ["skill_id"], name: "index_teams_on_skill_id"
+    t.index ["sport_id"], name: "index_teams_on_sport_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -128,4 +154,9 @@ ActiveRecord::Schema.define(version: 20180507110002) do
   add_foreign_key "leagues", "skills"
   add_foreign_key "leagues", "sports"
   add_foreign_key "profiles", "users"
+  add_foreign_key "teams", "days"
+  add_foreign_key "teams", "genders"
+  add_foreign_key "teams", "skills"
+  add_foreign_key "teams", "sports"
+  add_foreign_key "teams", "users", column: "owner_id"
 end

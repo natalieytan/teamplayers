@@ -8,5 +8,7 @@ Rails.application.routes.draw do
   patch '/profile', to: 'profiles#update'
   resources :profiles, only: [:create, :show]
   resources :interests
+  resources :teams
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
