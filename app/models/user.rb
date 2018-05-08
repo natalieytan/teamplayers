@@ -7,4 +7,6 @@ class User < ApplicationRecord
   has_many :interests
   has_many :sports, through: :interests
   has_many :teams_owned, :class_name => "Team", :foreign_key => :owner_id
+  has_many :team_players
+  has_many :teams, through: :team_players
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180508012416) do
+ActiveRecord::Schema.define(version: 20180508062112) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,6 +99,17 @@ ActiveRecord::Schema.define(version: 20180508012416) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "team_players", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "team_id"
+    t.boolean "admin", default: false
+    t.text "role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_team_players_on_team_id"
+    t.index ["user_id"], name: "index_team_players_on_user_id"
+  end
+
   create_table "teams", force: :cascade do |t|
     t.bigint "owner_id"
     t.bigint "sport_id"
@@ -154,6 +165,8 @@ ActiveRecord::Schema.define(version: 20180508012416) do
   add_foreign_key "leagues", "skills"
   add_foreign_key "leagues", "sports"
   add_foreign_key "profiles", "users"
+  add_foreign_key "team_players", "teams"
+  add_foreign_key "team_players", "users"
   add_foreign_key "teams", "days"
   add_foreign_key "teams", "genders"
   add_foreign_key "teams", "skills"
