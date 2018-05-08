@@ -1,5 +1,7 @@
 class InterestsController < ApplicationController
   before_action :set_interest, only: [:edit, :update, :destroy]
+  before_action :auth_actions, only: [:edit, :update, :destroy]
+
   def index
     @interests = current_user.interests
     @interest = Interest.new
@@ -47,5 +49,8 @@ end
     params.require(:interest).permit(:sport_id, :skill)
   end
 
+  def auth_actions
+    authorize @interest
+  end
 
 end
