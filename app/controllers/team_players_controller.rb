@@ -1,5 +1,5 @@
 class TeamPlayersController < ApplicationController
-  before_action :set_team, only: [:index, :update]
+  before_action :set_team, only: [:index]
   before_action :set_team_player, only: [:edit, :update, :destroy]
   before_action :auth_actions, only: [:edit, :update,:destroy]
   before_action :team_player_params, only: [:update]
@@ -20,7 +20,7 @@ class TeamPlayersController < ApplicationController
   def update
     if @team_player.update(team_player_params)
       flash[:notice] = "Successfully updated team player information"
-      redirect_to team_team_players_path(@team)
+      redirect_to team_team_players_path(@team_player.team)
     else
       flash.now[:alert] = "Unable to update team player details. Please check errors"
       if @team_player.team.owner == @team_player.user
@@ -34,10 +34,10 @@ class TeamPlayersController < ApplicationController
   def destroy
     team = @team_player.team
     if @team_player.user == team.owner
-      redirect_to team, alert: "You cannot delete the team owner from your team."
+      redirect_to team_team_players_path(team), alert: "You cannot delete the team owner from your team."
     else
       @team_player.destroy
-      redirect_to team , notice: "Successfully deleted player from your team."
+      redirect_to team_team_players_path(team) , notice: "Successfully deleted player from your team."
     end
   end
 

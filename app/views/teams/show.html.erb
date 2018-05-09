@@ -52,6 +52,8 @@
 </p>
 
 <% if current_user.admin_of_team?(@team) %>
+  <%= link_to "Review Team Applications", team_team_applications_path(@team), class: "accent-btn" %>
+
   <%= link_to "Modify Team Member List", team_team_players_path(@team), class: "accent-btn" %>
   
 <% end %>
