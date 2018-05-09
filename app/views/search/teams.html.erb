@@ -1,0 +1,49 @@
+<div class="box">
+<h2>Search For A Team</h2>
+<%= form_with scope: :teamsearch, method: :get, local: true, class: "fancyform" do |form| %>
+
+  <div class="field row">
+  <div class="l-3 m-12  formlabel">
+    <%= form.label :sport_id %>
+  </div>
+  <div class="l-9 m-12 inputbox">
+    <%= form.collection_select :sport_id, Sport.order('name ASC'), :id, :title_name, :include_blank => true %>
+  </div>
+  </div>
+
+    <div class="field row">
+  <div class="l-3 m-12  formlabel">
+    <%= form.label :gender_id %>
+  </div>
+  <div class="l-9 m-12 inputbox checkline">
+    <%= form.collection_check_boxes :gender_id, Gender.all, :id, :name, include_hidden: false do |b| %>
+        <div class="checky">
+        <%= b.check_box %>
+        <%= b.label %>
+        </div>
+     <%end %>
+  </div>
+  </div>
+
+      <div class="field row">
+  <div class="l-3 m-12  formlabel">
+    <%= form.label :skill, "Skill level" %>
+  </div>
+  <div class="l-9 m-12 inputbox checkline">
+    <%= form.collection_check_boxes :skill_id, Skill.all, :id, :name, include_hidden: false do |b| %>
+        <div class="checky">
+        <%= b.check_box %>
+        <%= b.label %>
+        </div>
+    <% end %>
+  </div>
+
+  <%= form.submit "Search" %>
+  </div>
+
+
+
+ 
+<% end %>
+
+</div>

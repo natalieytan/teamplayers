@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180509040917) do
+ActiveRecord::Schema.define(version: 20180509082336) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -140,6 +140,7 @@ ActiveRecord::Schema.define(version: 20180509040917) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
+    t.boolean "accepting_players", default: true
     t.index ["day_id"], name: "index_teams_on_day_id"
     t.index ["gender_id"], name: "index_teams_on_gender_id"
     t.index ["owner_id"], name: "index_teams_on_owner_id"
