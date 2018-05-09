@@ -26,8 +26,8 @@
                   <a href="#">Account</a>
                   <input type="checkbox" id="drop-1"/>
                   <ul>
-                    <li><%= link_to 'View Profile', profile_path %></li>
-                    <li><%= link_to 'Edit Profile', profile_edit_path %></li>
+                    <li><%= link_to 'View Profile', myprofile_path %></li>
+                    <li><%= link_to 'Edit Profile', myprofile_edit_path %></li>
                     <li><%= link_to 'Edit Interests', interests_path %></li>
                     <li><%= link_to 'Change Password', edit_user_registration_path %></li>
                     <li><%= link_to "Logout", destroy_user_session_path, method: :delete  %></li>
@@ -42,6 +42,7 @@
                 <ul>
                     <li><%= link_to "My Teams", teams_path %></li>
                     <li><%= link_to "Create New Team", new_team_path %></li>
+                    <li><%= link_to "My Applications", myapplications_path %></li>
                 </ul>
                 </li>
                 <li><a href="#">Find Players</a></li>

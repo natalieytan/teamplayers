@@ -40,8 +40,25 @@
 <p>
   <strong>Founder</strong>
     <br/>
-  <%= @team.owner.profile.full_name %>
+  <%= link_to @team.owner.profile.full_name, @team.owner.profile %>
 </p>
 
+<p>
+  <strong>Members</strong>
+    <br/>
+  <% @team.users.each do |user| %>
+    <%= link_to user.profile.full_name, user.profile %>
+  <% end %>
+</p>
+
+<% if current_user.admin_of_team?(@team) %>
+  <%= link_to "Modify Team Member List", team_team_players_path(@team), class: "accent-btn" %>
+  
+<% end %>
+
+<% if current_user.is_not_in_team?(@team) %>
+  <%= link_to "Apply To Join Team", new_team_team_application_path(@team), class: "accent-btn" %>
+  
+<% end %>
 </div>
 

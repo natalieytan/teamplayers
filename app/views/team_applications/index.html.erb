@@ -1,0 +1,43 @@
+<h2> Showing applications for </h2>
+<h2><%= @team.name %> </h2>
+
+<table>
+<thead>
+<th>
+Applicant
+</th>
+<th>
+Date Applied
+</th>
+<th>
+Status
+</th>
+<th>
+Review
+</th>
+</thead>
+
+<tbody>
+
+
+<% @team.pending_applications.each  do |team_application| %>
+
+<tr>
+<td>
+<%= link_to team_application.applicant.profile.full_name, profile_path(team_application.applicant.profile) %>
+</td>
+<td>
+<%= team_application.created_at.strftime("%B %d, %Y") %>
+</td>
+<td>
+<%= team_application.status %>
+</td>
+<td>
+ <%= link_to  edit_team_application_path(team_application) do %> 
+<%= fa_icon "edit" %></i>
+<% end %> 
+</td>
+</tr>
+<% end %>
+</tbody>
+</table>

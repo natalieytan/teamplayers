@@ -1,0 +1,44 @@
+
+<table>
+<thead>
+<th>
+Player
+</th>
+<th>
+Role
+</th>
+<th>
+Admin
+</th>
+<th>
+Edit
+</th>
+<th>
+Delete
+</th>
+</thead>
+
+<tbody>
+<% @team_players.each  do |team_player| %>
+<tr>
+<td>
+<%= link_to team_player.user.profile.full_name, team_player.user.profile %>
+</td>
+<td>
+<%= team_player.role %>
+</td>
+<td>
+<%= team_player.admin %>
+</td>
+<td>
+ <%= link_to  edit_team_player_path(team_player) do %> 
+<%= fa_icon "edit" %></i>
+<% end %> 
+</td>
+<td>
+<%= link_to team_player, method: :delete, data: { confirm: "Are you sure you want to delete this player (#{team_player.user.profile.full_name})from your Team?" } do %>
+<%= fa_icon "trash" %> 
+ <% end %>
+  <% end %>
+</tbody>
+</table>

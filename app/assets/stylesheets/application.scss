@@ -326,13 +326,23 @@ label.required:after{
 }
 
 .fancyform {
-	select {
+	label {
+		font-size: 1.1rem;
+		font-weight: bold;
+	}
+	input, textarea {
 		width: 100%;
 	}
+
+
+    #user_remember_me {
+        width: 15px;
+        border: 1px solid black;
+    }
 }
 
 
-input[type=submit] {
+.accent-btn, input[type=submit] {
 	@extend %bright-action;
 	padding: 1rem;
 	font-size: 1.2rem;
@@ -342,8 +352,9 @@ input[type=submit] {
 	cursor: pointer;
 }
 
-input[type=submit]:hover {
+.accent-btn:hover, input[type=submit]:hover {
 	background-color: $bright-accent-hover;
+	color: $base-contrast;
 }
 
 input, textarea, select {

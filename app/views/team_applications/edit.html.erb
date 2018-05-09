@@ -1,0 +1,35 @@
+<div class="form">
+<h2> Review Application</h2>
+<%= @team_application.applicant.profile.full_name %>
+<%= @team_application.message %>
+
+<%= form_with(model: @team_application, url: team_application_path, local: true, class: "fancyform") do |form| %>
+  <% if @team_application.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@team_application.errors.count, "error") %> prohibited this team application from being saved:</h2>
+
+      <ul>
+      <% @team_application.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field row">
+    <div class="l-3 m-12  formlabel">
+    <%= form.label :status %>
+    </div>
+    <div class="l-9 m-12 inputbox">
+    <%= form.select :status, TeamApplication.statuses.keys[1..-1].map { |w| [w.humanize, w]}, :include_blank => true, class: "styled-select" %>
+    </div>
+
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Request To Join Team" %>
+  </div>
+<% end %>
+
+
+</div>

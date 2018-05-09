@@ -1,5 +1,5 @@
 <div class="card centretext">
-<h2>Your Profile</h2>
+<h2>My Profile</h2>
 <div class="rounded">
  <%= image_tag @profile.image_url(:square) %>
 </div>
@@ -63,5 +63,14 @@ Skill Level (self-rated)
 <% end %>
 </tbody>
 </table>
+
+<h2>Teams</h2>
+    <br/>
+  <% @teams.each do |team| %>
+    <%= link_to team.name, team %>
+  <% end %>
+</p>
+
+
 </div>
 

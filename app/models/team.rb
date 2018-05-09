@@ -9,6 +9,8 @@ class Team < ApplicationRecord
   belongs_to :day
   has_many :team_players
   has_many :users, through: :team_players
+  has_many :team_applications
+  has_many :applicants, through: :team_applications
   geocoded_by :full_street_address 
   after_validation :geocode
   validates :name, presence: true
@@ -25,4 +27,13 @@ class Team < ApplicationRecord
       admin: true
     })
   end
+
+  def team_admins
+    TeamPlayer.where(team_id: id, admin: true)
+  end
+
+  def pending_applications
+    TeamApplication.where(team_id: id, status: 1)
+  end
+
 end

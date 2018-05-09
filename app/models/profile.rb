@@ -25,4 +25,8 @@ class Profile < ApplicationRecord
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  def not_modified?
+    created_at == updated_at
+  end
 end

@@ -1,0 +1,43 @@
+<div class="card centretext">
+<h2>Update Team Player Role</h2>
+
+<strong> Player: </strong>   <%= @team_player.user.profile.full_name %> (Owner)
+</br>
+<strong> Team: </strong>  <%= @team_player.team.name %>
+
+<div class="fancyform">
+<%= form_with(model: @team_player , local: true) do |form| %>
+  <% if @team_player.errors.any? %>
+    <div id="error_explanation">
+      <h4><%= pluralize(@team_player.errors.count, "error") %> prohibited this team player from being updated.</h4>
+
+      <ul>  
+      <% @team_player.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field row">
+  <div class="l-3 m-12 formlabel">
+    <%= form.label :role %>
+      </div>
+  <div class="l-9 m-12 inputbox">
+    <%= form.text_field :role %>
+  </div>
+  </div>
+
+    <div class="field row">
+  <div class="l-3 m-12 formlabel">
+    <%= form.label :admin %>
+      </div>
+  <div class="l-9 m-12 inputbox">
+    <%= form.select :admin %>
+  </div>
+  </div>
+
+    <%= form.submit "Update Player" %>
+<% end %>
+</div>
+</div>

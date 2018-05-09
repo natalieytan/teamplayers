@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :set_profile, only: [:show]
+  before_action :set_profile_and_interests, only: [:show]
 
   # Shows user profile by id
   # GET /profiles/1
@@ -11,9 +11,10 @@ class ProfilesController < ApplicationController
   def own
     @profile = current_user.profile
     @interests = current_user.interests
-    if @profile.nil?
-      flash[:alert] = "You do not have a profile yet. Please create one!"
-      redirect_to profile_edit_path
+    @teams = current_user.teams
+    if @profile.not_modified?
+      flash[:alert] = "You have yet to create your profile. Please create one!"
+      redirect_to myprofile_edit_path
     end
   end
 
@@ -50,9 +51,11 @@ class ProfilesController < ApplicationController
   end
 
   private
-    def set_profile
+    def set_profile_and_interests
       user = User.find(params[:id])
       @profile = user.profile
+      @interests = user.interests
+      @teams = user.teams
     end
 
     def profile_params

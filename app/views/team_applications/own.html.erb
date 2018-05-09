@@ -1,0 +1,42 @@
+<h2> My Applications </h2>
+
+
+<table>
+<thead>
+<th>
+Team
+</th>
+<th>
+Date Applied
+</th>
+<th>
+Status
+</th>
+<th>
+Remove
+</th>
+</thead>
+
+<tbody>
+<% @team_applications.each do |team_application| %>
+<tr>
+<td>
+<%= link_to team_application.applied_team.name, team_application.applied_team %>
+</td>
+<td>
+<%= team_application.created_at.strftime("%B %d, %Y") %>
+</td>
+<td>
+<%= team_application.status %>
+</td>
+<td>
+<%= link_to team_application, method: :delete, data: { confirm: 'Are you sure you want to cancel this team application?' } do %>
+<%= fa_icon "trash" %> 
+ <% end %>
+
+</td>
+
+</tr>
+<% end %>
+</tbody>
+</table>
