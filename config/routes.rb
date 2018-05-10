@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   root 'static#index'
   get 'search/teams'
+  get 'search/players'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
   root 'static#index'

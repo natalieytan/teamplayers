@@ -1,36 +1,23 @@
 <div class="box">
-<h2>Search For A Team</h2>
-<%= form_with scope: :teamsearch, method: :get, local: true, class: "fancyform" do |form| %>
+<h2>Search For A Player</h2>
+<%= form_with scope: :playersearch, method: :get, local: true, class: "fancyform" do |form| %>
 
+<%= fields_for :interests do |interest_field| %>
   <div class="field row">
   <div class="l-3 m-12  formlabel">
-    <%= form.label :sport_id %>
+    <%= interest_field.label :sport_id %>
   </div>
   <div class="l-9 m-12 inputbox">
-    <%= form.collection_select :sport_id, Sport.order('name ASC'), :id, :title_name, :include_blank => true %>
-  </div>
-  </div>
-
-    <div class="field row">
-  <div class="l-3 m-12  formlabel">
-    <%= form.label :gender_id %>
-  </div>
-  <div class="l-9 m-12 inputbox checkline">
-    <%= form.collection_check_boxes :gender_id, Gender.all, :id, :name, include_hidden: false do |b| %>
-        <div class="checky">
-        <%= b.check_box %>
-        <%= b.label %>
-        </div>
-     <%end %>
+    <%= interest_field.collection_select :sport_id, Sport.order('name ASC'), :id, :title_name, :include_blank => true %>
   </div>
   </div>
 
       <div class="field row">
   <div class="l-3 m-12  formlabel">
-    <%= form.label :skill, "Skill level" %>
+    <%= interest_field.label :skill, "Skill level" %>
   </div>
   <div class="l-9 m-12 inputbox checkline">
-    <%= form.collection_check_boxes :skill_id, Skill.all, :id, :name, include_hidden: false do |b| %>
+    <%= interest_field.collection_check_boxes :skill, Skill.all, :id, :name, include_hidden: false do |b| %>
         <div class="checky">
         <%= b.check_box %>
         <%= b.label %>
@@ -38,12 +25,25 @@
     <% end %>
   </div>
  </div>
+
+ <% end %>
+ <%= fields_for :profile do |profile_field| %>
+    <div class="field row">
+  <div class="l-3 m-12  formlabel">
+    <%= profile_field.label :gender %>
+  </div>
+  <div class="l-9 m-12 inputbox">
+      <%= profile_field.select :gender, [['Male', 1], ['Female', 2]], include_blank: true %>
+  </div>
+  </div>
+ <% end %>
+
   <div class="field row">
   <div class="l-3 m-12  formlabel">
     <%= form.label :location %>
   </div>
   <div class="l-9 m-12 inputbox">
-      <%= form.text_field :location, id:"autocomplete", placeholder: "Enter your address",
+      <%= form.text_field :location, id:"autocomplete", placeholder: "Enter where your team is located",
              onFocus: "geolocate()" %>
   </div>
   </div>
@@ -68,21 +68,16 @@
 </div>
 
 <div class="box">
-<% @teams.each do |team| %>
-<div class="team-box">
-<div class="team-header">
-<%= team.sport.name %>
-<%= team.gender.name %>
-<%= team.skill.name %>
-</div>
-<%= link_to team.name, team %>
-<%= image_tag team.image_url(:small) %>
-<%= team.description %>
-<%= team.full_street_address %>
-</div>
-<% end %>
+<% @players.each do |player| %>
+<div class="player-box">
+<%= player.profile.full_name %>
+<%= player.profile.gender %>
+<%= player.profile.simple_location %>
+
 </div>
 
+<% end %>
+</div>
 
 
      <script>

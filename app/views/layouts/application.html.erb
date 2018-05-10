@@ -45,8 +45,8 @@
                     <li><%= link_to "Create New Team", new_team_path %></li>
                 </ul>
                 </li>
-                <li><a href="#">Find Players</a></li>
-                <li><a href="#">Find Teams</a></li>
+                <li><%= link_to "Find Players", search_players_path %></li>
+                <li><%= link_to "Find Teams", search_teams_path %></li>
 
                 <% else %>
                   <li><%= link_to "Sign up", new_user_registration_path  %></li>
