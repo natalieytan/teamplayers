@@ -140,3 +140,14 @@ Some 'nice to have' features (which are quite feaible) I wish to implement in th
 [Izuddin Helmi Adnan - Unsplash](https://unsplash.com/photos/ndxwXAt0jpg)
 
 [Index page icons - Freepik](https://www.flaticon.com/authors/freepik)
+
+# Acknowledgements
+Many thanks to my friends at coder academy, for the numerous code reviews, snippets of wisdom and random gifs that have got me got me through these past 2 weeks of the project.
+
+## My friends
+- [Mark](https://github.com/marktice)
+- [Jess](https://github.com/jessodri)
+- [Drew](https://github.com/oheydrew)
+- [Chris](https://github.com/ongsterr)
+- [Cameo](https://github.com/cameocodes)
+- [Glenn](https://github.com/waltandmartha)
