@@ -1,11 +1,22 @@
-<div class="box">
+<div class="card">
 <h2>Search For A Player</h2>
 <%= form_with scope: :playersearch, method: :get, local: true, class: "fancyform" do |form| %>
+
+ <%= fields_for :profile do |profile_field| %>
+    <div class="field row">
+  <div class="l-3 m-12  formlabel">
+    <%= profile_field.label :gender, class: "required" %>
+  </div>
+  <div class="l-9 m-12 inputbox">
+      <%= profile_field.select :gender, [['Male', 1], ['Female', 2]], include_blank: true %>
+  </div>
+  </div>
+ <% end %>
 
 <%= fields_for :interests do |interest_field| %>
   <div class="field row">
   <div class="l-3 m-12  formlabel">
-    <%= interest_field.label :sport_id %>
+    <%= interest_field.label :sport_id, class: "required" %>
   </div>
   <div class="l-9 m-12 inputbox">
     <%= interest_field.collection_select :sport_id, Sport.order('name ASC'), :id, :title_name, :include_blank => true %>
@@ -27,23 +38,13 @@
  </div>
 
  <% end %>
- <%= fields_for :profile do |profile_field| %>
-    <div class="field row">
-  <div class="l-3 m-12  formlabel">
-    <%= profile_field.label :gender %>
-  </div>
-  <div class="l-9 m-12 inputbox">
-      <%= profile_field.select :gender, [['Male', 1], ['Female', 2]], include_blank: true %>
-  </div>
-  </div>
- <% end %>
 
   <div class="field row">
   <div class="l-3 m-12  formlabel">
     <%= form.label :location %>
   </div>
   <div class="l-9 m-12 inputbox">
-      <%= form.text_field :location, id:"autocomplete", placeholder: "Enter where your team is located",
+      <%= form.text_field :location, id:"autocomplete", placeholder: "Enter a location",
              onFocus: "geolocate()" %>
   </div>
   </div>
@@ -54,6 +55,7 @@
   </div>
   <div class="l-9 m-12 inputbox">
       <%= form.select :distance, [['5 Kilometers', 5], ['10 Kilometers', 10], ['15 Kilometers', 15], ['25 Kilometers', 25], ['35 Kilometers', 35], ['50 Kilometers', 50]], include_blank: true %>
+      <p class="subtle-text">Defaults to 5 km if not set.</p>
   </div>
   </div>
 
@@ -67,18 +69,18 @@
 
 </div>
 
-<div class="box">
+
+
+<% unless @players.empty? %>
+<div class="card">
+<h2>Search Results</h2>
+
 <% @players.each do |player| %>
-<div class="player-box">
-<%= player.profile.full_name %>
-<%= player.profile.gender %>
-<%= player.profile.simple_location %>
-
-</div>
-
+<%= render "playerbox", player: player %>
 <% end %>
 </div>
-
+<% end %>
+</div>
 
      <script>
       // This example displays an address form, using the autocomplete feature

@@ -1,0 +1,36 @@
+<div class="team-box">
+<div class="team-header">
+<p>
+<%= team.sport.name.titleize %>
+</p>
+<p>
+<%= team.gender.name %>
+</p>
+<p>
+<%= team.skill.name %>
+</p>
+</div>
+<div class="team-body row">
+
+<div class="m-12 l-6">
+<%= marker_map(team) %>
+<% unless @coords.nil? %>
+    <p><strong><%= fa_icon "location-arrow" %> Distance from your search: </strong> <%= team.distance_to(@coords).round(1)  %> km </p>
+<% end %>
+</div>
+
+<div class="m-12 l-6">
+<p><strong>Team:</strong> <%= link_to team.name, team %></p>
+<p><strong>Description</strong> <%= team.description %></p>
+<p><strong>Playing day:</strong> <%= team.day.name %></p>
+<p><strong>Gender:</strong> <%= team.gender.name %></p>
+<p><strong>Skill level:</strong> <%= team.skill.name %></p>
+<p><strong>Sport:</strong> <%= team.sport.name.humanize %></p>
+<p><strong>Location</strong> <%= team.full_street_address %></p>
+<%=  link_to "View Team", team, class: "accent-btn" %>
+
+</div>
+
+
+
+</div>

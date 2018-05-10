@@ -487,6 +487,15 @@ input, textarea, select {
 .centretext {
 	text-align: center;
 }
+
+.avatar {
+	width: 75px;
+	height: 75px;
+	img {
+		width: 75px;
+		height: auto;
+	}
+}
 .rounded {
 	border-radius: 50%;
 	width: 150px;
@@ -499,11 +508,31 @@ input, textarea, select {
 	align-items: center;
 	justify-content: center;
 	img {
-		height: 150px;
+		height: auto;
 		width: 150px;
 	}
 }
 
+.team-box {
+	border: 1px solid $light-shadow-color;
+}
+
+.team-body {
+	div {
+		padding: 1rem;
+	}
+	p {
+		padding: 0.2rem;
+		margin: 0.2rem;
+	}
+}
+.team-header {
+	background: $scondary-color;
+	color: $base-color;
+	font-weight: strong;
+	display: flex;
+	justify-content: space-between;
+}
 .map {
 	width: 100%;
 	max-width: 650px;
@@ -581,6 +610,13 @@ footer a{
 	}
 }
 
+.w-20 {
+	width: 20%;
+}
+
+.w-80 {
+	width: 80%
+}
 /* Media Queries
 --------------------------------------------- */
 @media all and (min-width: 769px) {
@@ -633,6 +669,12 @@ footer a{
 @media all and (max-width : 1100px) {
 .container {
 	width: 100%;
+}
+.checkline {
+	display: block;
+	div {
+		width: 100%;
+	}
 }
 }
 @media all and (max-width : 768px) {

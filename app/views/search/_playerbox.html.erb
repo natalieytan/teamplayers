@@ -1,0 +1,32 @@
+<div class="team-box">
+<div class="team-header">
+<p>
+<%= player.full_name %>
+</p>
+</div>
+<div class="team-body row">
+
+<div class="m-12 l-6">
+<%= marker_map(player) %>
+<% unless @coords.nil? %>
+    <p><strong><%= fa_icon "location-arrow" %> Distance from your search: </strong> <%= player.distance_to(@coords).round(1)  %> km </p>
+<% end %>
+</div>
+
+<div class="m-12 l-6">
+<div class="rounded">
+<%= image_tag player.image_url(:small) %>
+</div>
+<p><strong>Name:</strong> <%= link_to player.full_name, player %></p>
+<p><strong>Gender: </strong> <%= player.gender.humanize %></p>
+<p><strong>Description: </strong> <%= player.description %></p>
+<p><strong>Location: </strong> <%= player.simple_location %></p>
+</div>
+
+
+
+
+
+</div>
+
+<%=  link_to "View Player", player, class: "accent-btn" %>
