@@ -21,10 +21,12 @@
 <p><strong>
  We enjoy connecting players with teams. </strong></p>
 
+         <% unless user_signed_in? %>
 <div class="nowrapflex marginbottom">
  <%= link_to "Sign up", new_user_registration_path, class: "accent-btn half" %>
  <%= link_to "Login", new_user_session_path, class: "accent-btn half" %>
  </div>
+ <% end %>
 
  <div class="nowrapflex marginbottom">
  <div>

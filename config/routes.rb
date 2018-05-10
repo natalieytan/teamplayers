@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
   root 'static#index'
-  resources :profiles, only: [:create, :show]
+  resources :profiles, only: [:create, :show, :update]
   get '/myprofile', to: 'profiles#own'
   get '/myprofile/edit', to: 'profiles#edit'
   patch '/myprofile', to: 'profiles#update'
