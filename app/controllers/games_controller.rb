@@ -50,8 +50,9 @@ class GamesController < ApplicationController
 
   # DELETE /games/1
   def destroy
+    team = @game.team
     @game.destroy
-    redirect_to games_url, notice: 'Game was successfully destroyed.' 
+    redirect_to team_games_path(team), notice: 'Game was successfully destroyed.' 
   end
 
   private

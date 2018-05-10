@@ -11,48 +11,157 @@
     </div>
   <% end %>
   
-  <div class="field">
-    <%= form.label :skill_id %>
+
+  <div class="field row">
+    <div class="l-3 m-12  formlabel">
+    <%= form.label :skill_id, class: "required" %>
+    </div>
+    <div class="l-9 m-12 inputbox">
     <%= form.collection_select :skill_id, Skill.all, :id, :name, :include_blank => true,  required: true %>
   </div>
+  </div>
 
-    <div class="field">
-    <%= form.label :gender_id %>
+  <div class="field row">
+    <div class="l-3 m-12  formlabel">
+    <%= form.label :gender_id, class: "required" %>
+        </div>
+    <div class="l-9 m-12 inputbox">
     <%= form.collection_select :gender_id, Gender.all, :id, :name, :include_blank => true,  required: true %>
+    <%= form.collection_select :skill_id, Skill.all, :id, :name, :include_blank => true,  required: true %>
+  </div>
   </div>
 
 
-  <div class="field">
+  <div class="field row">
+    <div class="l-3 m-12  formlabel">
     <%= form.label :description %>
+      </div>
+    <div class="l-9 m-12 inputbox">
     <%= form.text_area :description, id: :game_description %>
   </div>
+  </div>
 
-  <div class="field">
-    <%= form.label :location %>
+  <div class="field row">
+    <div class="l-3 m-12  formlabel">
+    <%= form.label :location, class: "required" %>
+     </div>
+    <div class="l-9 m-12 inputbox">
     <%= form.text_area :location, id: :game_location %>
   </div>
+  </div>
 
-  <div class="field">
-    <%= form.label :matchday %>
+
+  <div class="field row">
+    <div class="l-3 m-12  formlabel">
+    <%= form.label :matchday, class: "required" %>
+    </div>
+    <div class="l-9 m-12 inputbox">
     <%= form.datetime_field :matchday, id: :game_matchday, min: Date.today %>
   </div>
-
-  <div class="field">
-    <%= form.label :cost %>
-    $ <%= form.number_field :cost, id: :game_cost, min: 0, step: 0.01 %>
   </div>
 
-  <div class="field">
-    <%= form.label :open_to_public %>
+  <div class="field row">
+    <div class="l-3 m-12  formlabel">
+    <%= form.label :cost, class: "required" %>
+      </div>
+    <div class="l-9 m-12 inputbox">
+    $ <%= form.number_field :cost, id: :game_cost, min: 0, step: 0.01 %> (AUD)
+  </div>
+  </div>
+
+  <div class="field row">
+    <div class="l-3 m-12  formlabel">
+      <%= form.label :open_to_public %>
+            </div>
+    <div class="l-9 m-12 inputbox">
     <%= form.check_box :open_to_public, id: :game_open_to_public %>
   </div>
+  </div>
 
-  <div class="field">
+  <div class="field row">
+    <div class="l-3 m-12  formlabel">
     <%= form.label :message_to_public %>
+                </div>
+    <div class="l-9 m-12 inputbox">
     <%= form.text_area :message_to_public, id: :game_message_to_public %>
+  </div>
   </div>
 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+
+
+
+    <script>
+      // This example displays an address form, using the autocomplete feature
+      // of the Google Places API to help users fill in the information.
+
+      // This example requires the Places library. Include the libraries=places
+      // parameter when you first load the API. For example:
+      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+      var placeSearch, autocomplete;
+      var componentForm = {
+        street_number: 'short_name',
+        route: 'long_name',
+        locality: 'long_name',
+        administrative_area_level_1: 'short_name',
+        country: 'long_name',
+        postal_code: 'short_name'
+      };
+
+      function initAutocomplete() {
+        // Create the autocomplete object, restricting the search to geographical
+        // location types.
+        autocomplete = new google.maps.places.Autocomplete(
+            /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+            {types: ['geocode']});
+
+        // When the user selects an address from the dropdown, populate the address
+        // fields in the form.
+        autocomplete.addListener('place_changed', fillInAddress);
+      }
+
+      function fillInAddress() {
+        // Get the place details from the autocomplete object.
+        var place = autocomplete.getPlace();
+
+        for (var component in componentForm) {
+          document.getElementById(component).value = '';
+          document.getElementById(component).disabled = false;
+        }
+
+        // Get each component of the address from the place details
+        // and fill the corresponding field on the form.
+        for (var i = 0; i < place.address_components.length; i++) {
+          var addressType = place.address_components[i].types[0];
+          if (componentForm[addressType]) {
+            var val = place.address_components[i][componentForm[addressType]];
+            document.getElementById(addressType).value = val;
+          }
+        }
+      }
+
+      // Bias the autocomplete object to the user's geographical location,
+      // as supplied by the browser's 'navigator.geolocation' object.
+      function geolocate() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var geolocation = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+            var circle = new google.maps.Circle({
+              center: geolocation,
+              radius: position.coords.accuracy
+            });
+            autocomplete.setBounds(circle.getBounds());
+          });
+        }
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4JYfecnp9SrqFt5SU5z6g4TBJ5X3MUvs&libraries=places&callback=initAutocomplete"
+        async defer></script>
+  

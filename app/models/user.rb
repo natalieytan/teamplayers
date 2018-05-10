@@ -11,7 +11,13 @@ class User < ApplicationRecord
   has_many :teams, through: :team_players
   has_many :team_applications
   has_many :applied_teams, through: :team_applications
+  has_many :game_players
+  has_many :games, through: :game_players
   after_create :create_profile
+
+  def upcoming_games
+    GamePlayer.joins(game: :team).where("user_id = ? AND matchday > ?", id, DateTime.now)
+  end
 
   def admin_of_team?(team)
     TeamPlayer.where(user_id: id, team: team, admin: true).exists?

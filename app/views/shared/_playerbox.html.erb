@@ -1,0 +1,8 @@
+  <div class="flex">
+    <% players.each do |player| %>
+    <div class="user-card">
+          <%= image_tag player.user.profile.image_url(:small), class: "avatar" %>
+          <%= link_to player.user.profile.full_name, player.user.profile %>
+          <%= player.role%>
+    </div>
+    <% end %>

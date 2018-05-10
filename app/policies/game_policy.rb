@@ -1,7 +1,7 @@
 class GamePolicy < ApplicationPolicy
   
   def show
-    record.open_public? || user.is_in_team?(record.team)
+    user.admin_of_team?(record.team)
   end
 
   def edit?
@@ -14,6 +14,14 @@ class GamePolicy < ApplicationPolicy
 
   def destroy?
     user.admin_of_team?(record.team)
+  end
+
+  def new_player?
+    record.open_to_public? || user.is_in_team?(record.team)
+  end
+
+  def create_player?
+    record.open_to_public? || user.is_in_team?(record.team)
   end
 
 end

@@ -21,6 +21,10 @@ class Team < ApplicationRecord
     "#{street_number} #{route}, #{administrative_area} #{postal_code}, #{country}"
   end
 
+  def info
+    "#{gender.name} #{sport.name.titleize} (#{skill.name})"
+  end
+
   def owner_in_team
     team_players.create({
       team_id: id,
@@ -28,6 +32,15 @@ class Team < ApplicationRecord
       admin: true
     })
   end
+
+  def upcoming_games
+    Game.where("team_id = ? AND matchday > ?", id, DateTime.now)
+  end
+
+  def previous_games
+    Game.where("team_id = ? AND matchday < ?", id, DateTime.now).limit(5)
+  end
+
 
   def team_admins
     TeamPlayer.where(team_id: id, admin: true)

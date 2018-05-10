@@ -1,0 +1,45 @@
+<div class="card centretext">
+<h2>Game Details</h2>
+<p>
+  <strong>Team:</strong>
+  <%= link_to @game.team.name, @game.team %>
+</p>
+
+<p>
+  <strong>Skill:</strong>
+  <%= @game.skill.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @game.description %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @game.location %>
+</p>
+
+<%= marker_map(@game) %>
+
+<p>
+  <strong>Matchday:</strong>
+  <%= @game.matchday.strftime("%A, %d %b %Y %l:%M %p") %>
+</p>
+
+<p>
+  <strong>Cost:</strong>
+  <%= @game.real_cost %>
+</p>
+
+<p>
+  <strong>Open to public:</strong>
+  <%= @game.open_to_public %>
+</p>
+
+<p>
+  <strong>Message to public:</strong>
+  <%= @game.message_to_public %>
+</p>
+
+</div>

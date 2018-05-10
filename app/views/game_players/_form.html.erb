@@ -1,0 +1,23 @@
+<%= form_with(model: game_player, local: true, class: "fancyform") do |form| %>
+  <% if game_player.errors.any? %>
+    <div id="error_explanation">
+      <h4><%= pluralize(game_player.errors.count, "error") %> prohibited this attendance from being updated:</h4>
+
+      <ul>  
+      <% game_player.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field row">
+    <div class="l-3 m-12  formlabel">
+    <%= form.label :attendance_status, class:"required"  %>
+        </div>
+    <div class="l-9 m-12 inputbox">
+    <%= form.select :attendance_status, GamePlayer.attendance_statuses.map { |k, v| ["#{v.to_s}. #{k.humanize}", k]}, :include_blank => true, class: "styled-select" %>
+ </div>
+  </div>
+    <%= form.submit "Update Attendance" %>
+<% end %>

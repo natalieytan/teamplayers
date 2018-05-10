@@ -1,12 +1,53 @@
-<div class="card">
+<div class="row">
+<div class="card m-12 l-6">
 <h2>My Teams</h2>
-<ul>
-<% @teams.each  do |team| %>
+    <div class="flex">
+  <% @teams.each do |team| %>
+  <div class="team-card">
+    <%= image_tag team.image_url(:small), class: "avatar" %>
+    <p> <%= link_to team.name, team %> <br/>
+ <%= team.info %></p>
+  </div>
+  <% end %>
+  </div>
 
-<li>
-<%= link_to team.name, team %>
-</li>
+</div>
 
+<div class="card m-12 l-6">
+<h2>Your Upcoming Games</h2>
+<table>
+<thead>
+<th>
+Matchday
+</th>
+<th>
+Team
+</th>
+<th>
+My Response
+</th>
+<th>
+Update Response
+</th>
+</thead>
+<tbody>
+<% @games.each do |game| %>
+<tr>
+<td>
+<%= game.game.matchday.strftime("%A, %d %b %Y %l:%M %p") %>
+</td>
+<td>
+<%= link_to game.game.team.name, game.game.team %>
+</td>
+<td>
+<%= game.attendance_status.humanize %>
+</td>
+<td>
+<%= link_to fa_icon("edit"), edit_game_player_path(game) %>
+</td>
+</tr>
 <% end %>
-</ul>
+</tbody>
+</table>
+</div>
 </div>

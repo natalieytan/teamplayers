@@ -11,11 +11,17 @@ Rails.application.routes.draw do
   patch '/myprofile', to: 'profiles#update'
   resources :interests
   resources :charges
+  
   resources :teams do
     resources :team_applications, shallow: true
-    resources :games, shallow: true
+    resources :games, only: [:index, :new, :create]
     resources :team_players, shallow: true, except: [:create, :new]
   end
+  resources :games, only: [:show, :edit, :update, :destroy] do
+    resources :game_players, only: [:new, :create]
+  end
+  resources :game_players, only: [:edit, :update]
+
   get '/myapplications', to: 'team_applications#own'
 
 end

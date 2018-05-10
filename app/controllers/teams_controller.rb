@@ -5,11 +5,13 @@ class TeamsController < ApplicationController
   # GET /teams.json
   def index
     @teams = current_user.teams
+    @games = current_user.upcoming_games
   end
 
   # GET /teams/1
   # GET /teams/1.json
   def show
+    @team_players = TeamPlayer.joins(user: :profile).where(team: @team)
   end
 
   # GET /teams/new

@@ -1,6 +1,10 @@
-<h2> Showing applications for </h2>
-<h2><%= @team.name %> </h2>
+<div class="card">
 
+<h2> Showing applications for <%= @team.name %> </h2>
+
+<% if @team.pending_applications.empty? %>
+<p class="centretext">There are no pending applications for this team.</p>
+<% else %>
 <table>
 <thead>
 <th>
@@ -41,3 +45,6 @@ Review
 <% end %>
 </tbody>
 </table>
+
+</div>
+<% end %>

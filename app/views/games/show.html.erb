@@ -1,13 +1,14 @@
-<p id="notice"><%= notice %></p>
-
+<div class="row">
+<div class="card centretext l-6 m-12">
+<h2>Game Details</h2>
 <p>
   <strong>Team:</strong>
-  <%= @game.team %>
+  <%= link_to @game.team.name, @game.team %>
 </p>
 
 <p>
   <strong>Skill:</strong>
-  <%= @game.skill %>
+  <%= @game.skill.name %>
 </p>
 
 <p>
@@ -20,14 +21,16 @@
   <%= @game.location %>
 </p>
 
+<%= marker_map(@game) %>
+
 <p>
   <strong>Matchday:</strong>
-  <%= @game.matchday %>
+  <%= @game.matchday.strftime("%A, %d %b %Y %l:%M %p") %>
 </p>
 
 <p>
   <strong>Cost:</strong>
-  <%= @game.cost %>
+  <%= @game.real_cost %>
 </p>
 
 <p>
@@ -40,3 +43,40 @@
   <%= @game.message_to_public %>
 </p>
 
+</div>
+
+<div class="card  l-6 m-12">
+<h2>Attendance</h2>
+<%= link_to "Update My Attendance", new_game_game_player_path(@game), class: "accent-btn"	%>
+<div class="row borderbottom">
+<div class="l-2 m-12">
+<p>
+<strong>Players Attending: </strong></p>
+</div>
+<div class="l-9 m-12">
+<%= render "shared/profilesbox", players: @game.attending_players %>
+</div>
+</div>
+
+<div class="row borderbottom">
+<div class="l-2 m-12">
+<p>
+<strong>Players Awaiting Response:  </strong></p>
+</div>
+<div class="l-9 m-12 faded">
+<%= render "shared/profilesbox", players: @game.awaiting_players %>
+</div>
+</div>
+
+<div class="row">
+<div class="l-2 m-12">
+<p>
+<strong>Players Not Attending </strong></p>
+</div>
+<div class="l-9 m-12 faded">
+<%= render "shared/profilesbox", players: @game.not_attending_players  %>
+</div>
+</div>
+
+</div>
+</div>
