@@ -11,7 +11,6 @@ class Game < ApplicationRecord
   validates :description, length: { maximum: 1000 }
   validates :matchday, presence: true
   validate :matchday_cannot_be_in_the_past
-  after_create :multiply_cost
   after_create :populate_gameplayers
 
   def real_cost
