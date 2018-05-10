@@ -52,8 +52,8 @@ class ProfilesController < ApplicationController
 
   private
     def set_profile_and_interests
-      user = User.find(params[:id])
-      @profile = user.profile
+      @profile = Profile.find(params[:id])
+      user = @profile.user
       @interests = user.interests
       @teams = user.teams
     end
