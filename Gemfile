@@ -17,7 +17,6 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
-gem 'rails_admin', '~> 1.3'
 gem 'aws-sdk', '~> 3.0', '>= 3.0.1'
 gem "font-awesome-rails"
 
