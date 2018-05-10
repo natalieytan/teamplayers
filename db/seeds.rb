@@ -46,15 +46,7 @@ require 'csv'
 #   {name: "Professional"}
 # ])
 
-# seed some organisations
-# organisations = CSV.open("db/organisations.csv", headers: :first_row).map(&:to_h)
-# Organisation.create!(organisations)
 
-# # seed some data for futsalHQ
-# futsalhq = CSV.open("db/futsalhq.csv", headers: :first_row).map(&:to_h)
-# League.create!(futsalhq)
-
-#users = CSV.open("db/people.csv", headers: :first_row).map(&:to_h)
 
 # seed some users
 # 99.times do |n|
@@ -124,18 +116,18 @@ require 'csv'
 # end
 
 # seed some Games
-200.times do |n|
-  team = Team.all.sample(1).first
-  Game.create!({
-    team_id: team.id,
-    skill_id: team.skill_id,
-    gender_id: team.gender_id,
-    description: Faker::FamilyGuy.quote,
-    matchday: Faker::Time.between(1.week.from_now, 3.months.from_now, :day),
-    location: team.full_street_address ,
-    longitude: team.longitude,
-    latitude: team.latitude,
-    cost: 10,
-    open_to_public: false
-  })
-end
+# 200.times do |n|
+#   team = Team.all.sample(1).first
+#   Game.create!({
+#     team_id: team.id,
+#     skill_id: team.skill_id,
+#     gender_id: team.gender_id,
+#     description: Faker::FamilyGuy.quote,
+#     matchday: Faker::Time.between(1.week.from_now, 3.months.from_now, :day),
+#     location: team.full_street_address ,
+#     longitude: team.longitude,
+#     latitude: team.latitude,
+#     cost: 10,
+#     open_to_public: false
+#   })
+# end

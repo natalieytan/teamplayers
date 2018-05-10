@@ -1,8 +1,0 @@
-sport_id,organisation_id,name,gender_id,skill_id,day_id,street_number,route,locality,administrative_area,postal_code,country
-2,1,Burwood Sunday Nights (Mixed League),3,3,7,225,Warrigal Road,Burwood,VIC,3125,Australia
-2,1,Burwood Monday Nights (Women’s League),2,3,1,225,Warrigal Road,Burwood,VIC,3125,Australia
-2,1,Burwood Thursday Nights (Women’s League),2,3,4,225,Warrigal Road,Burwood,VIC,3125,Australia
-2,1,Camberwell Sunday Nights (Men’s League),1,3,7,100,Prospect Hill Road,Cantebury,VIC,3124,Australia
-2,1,Carlton North Wednesday Nights (Mixed League),3,3,3,47,Arnold Street,Princes Hill,VIC,3054,Australia
-2,1,Hawthorn Sunday Nights (Men’s League),1,3,7,26,Burgess St,Hawthorn East ,VIC,3122,Australia
-2,1,Hawthorn Thursday Nights (Mixed League),3,3,4,26,Burgess St,Hawthorn East ,VIC,3122,Australia
