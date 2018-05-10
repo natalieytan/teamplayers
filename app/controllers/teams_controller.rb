@@ -45,7 +45,7 @@ class TeamsController < ApplicationController
         render :new
       else
         @team.save
-        TeamMailer.confirmation(@team.owner, @team).deliver_now
+        TeamMailer.confirmation(@team, @team.owner).deliver_now
         flash[:notice] = "Successfully created your team."
         redirect_to @team
       end
