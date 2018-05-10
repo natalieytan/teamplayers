@@ -131,7 +131,7 @@ require 'csv'
     skill_id: team.skill_id,
     gender_id: team.gender_id,
     description: Faker::FamilyGuy.quote,
-    matchday: Faker::Time.between(Date.today, 3.months.from_now, :day),
+    matchday: Faker::Time.between(1.week.from_now, 3.months.from_now, :day),
     location: team.full_street_address ,
     longitude: team.longitude,
     latitude: team.latitude,
