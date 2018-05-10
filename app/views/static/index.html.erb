@@ -1,2 +1,43 @@
-<h1>Static#index</h1>
-<p>Find me in app/views/static/index.html.erb</p>
+<div class="splash">
+</div>
+<div class="card m-12 l-12 centretext">
+
+<h1>Welcome to Teamplayers</h1>
+</br>
+<div class="row">
+<div class="m-6 l-3 l-ml-3">
+<div class="rounded">
+<%= image_tag "singleplayer.png" %>
+</div>
+</div>
+<div class="m-6 l-3 l-mr-3">
+<div class="rounded">
+<%= image_tag "team.png" %>
+</div>
+</div>
+</div>
+
+</br>
+<p><strong>
+ We enjoy connecting players with teams. </strong></p>
+
+<div class="nowrapflex marginbottom">
+ <%= link_to "Sign up", new_user_registration_path, class: "accent-btn half" %>
+ <%= link_to "Login", new_user_session_path, class: "accent-btn half" %>
+ </div>
+
+ <div class="nowrapflex marginbottom">
+ <div>
+ <%= image_tag "players.png", class: "avatar" %>
+<h4> <%= User.count %> Players</h4>
+ </div>
+  <div>
+   <%= image_tag "teams.png", class: "avatar" %>
+ <h4><%= Team.count %> Teams</h4>
+  </div>
+  <div>
+   <%= image_tag "games.png", class: "avatar" %>
+  <h4> <%= Game.count %> Games </h4>
+  </div> 
+ </div>
+</div>

@@ -4,8 +4,8 @@
 <%= player.full_name %>
 </p>
 </div>
-<div class="team-body row">
 
+<div class="team-body row">
 <div class="m-12 l-6">
 <%= marker_map(player) %>
 <% unless @coords.nil? %>
@@ -22,11 +22,7 @@
 <p><strong>Description: </strong> <%= player.description %></p>
 <p><strong>Location: </strong> <%= player.simple_location %></p>
 </div>
-
-
-
-
-
 </div>
 
 <%=  link_to "View Player", player, class: "accent-btn" %>
+</div>

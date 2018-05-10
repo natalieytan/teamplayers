@@ -198,7 +198,7 @@ main a:hover {
 
 .splash {
     background-image: image-url('playerbackground.png');
-    background-size: cover;
+  
     position: fixed;
     z-index: -1;
     top: 0;
@@ -223,6 +223,10 @@ main a:hover {
     margin: auto;
 }
 
+.bgplayer {
+	background-image: image-url('playerbackground.png');
+	min-height: 600px;
+}
 .box {
 	padding: 1rem;
 	margin: 1rem auto 1rem auto ;
@@ -357,6 +361,7 @@ label.required:after{
     }
 }
 
+
 .borderbottom {
 	border-bottom: 1px solid $light-shadow-color;
 	margin-bottom: 1rem;
@@ -373,6 +378,11 @@ label.required:after{
 .leftflex {
 	display: flex;
 	flex-wrap: wrap;
+}
+
+.rightflex {
+	display: flex;
+	align-items: flex-end;
 }
 
 .avatar {
@@ -496,6 +506,8 @@ input, textarea, select {
 		height: auto;
 	}
 }
+
+
 .rounded {
 	border-radius: 50%;
 	width: 150px;
@@ -515,6 +527,7 @@ input, textarea, select {
 
 .team-box {
 	border: 1px solid $light-shadow-color;
+	margin-bottom: 3rem;	
 }
 
 .team-body {
@@ -604,22 +617,30 @@ footer a{
 .nowrapflex {
 	display: flex;
 	flex-wrap: nowrap;
+	justify-content: space-around;
 
+	div {
+		text-align: center;
+	}
 	a {
 		margin: 1rem;
 	}
 }
 
-.w-20 {
-	width: 20%;
+.marginbottom {
+	margin-bottom: 2.5rem;
 }
 
-.w-80 {
-	width: 80%
-}
 /* Media Queries
 --------------------------------------------- */
 @media all and (min-width: 769px) {
+	.l-ml-3 {
+		margin-left: 25%
+
+	}
+	.l-mr-3 {
+		margin-right: 25%
+	}
     .l-12 {
         width: 100%;
 	}
