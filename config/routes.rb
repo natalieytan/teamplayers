@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  
-
   root 'static#index'
   get 'search/teams'
   get 'search/players'
@@ -14,6 +12,7 @@ Rails.application.routes.draw do
   resources :interests
   resources :teams do
     resources :team_applications, shallow: true
+    resources :games, shallow: true
     resources :team_players, shallow: true, except: [:create, :new]
   end
   get '/myapplications', to: 'team_applications#own'

@@ -11,6 +11,7 @@ class Team < ApplicationRecord
   has_many :users, through: :team_players
   has_many :team_applications
   has_many :applicants, through: :team_applications
+  has_many :games
   geocoded_by :full_street_address 
   after_validation :geocode
   validates :name, presence: true

@@ -1,0 +1,58 @@
+<%= form_with(model: game, url: form_path, local: true, class: "fancyform") do |form| %>
+  <% if game.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(game.errors.count, "error") %> prohibited this game from being saved:</h2>
+
+      <ul>
+      <% game.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="field">
+    <%= form.label :skill_id %>
+    <%= form.collection_select :skill_id, Skill.all, :id, :name, :include_blank => true,  required: true %>
+  </div>
+
+    <div class="field">
+    <%= form.label :gender_id %>
+    <%= form.collection_select :gender_id, Gender.all, :id, :name, :include_blank => true,  required: true %>
+  </div>
+
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :game_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :location %>
+    <%= form.text_area :location, id: :game_location %>
+  </div>
+
+  <div class="field">
+    <%= form.label :matchday %>
+    <%= form.datetime_field :matchday, id: :game_matchday, min: Date.today %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cost %>
+    $ <%= form.number_field :cost, id: :game_cost, min: 0, step: 0.01 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :open_to_public %>
+    <%= form.check_box :open_to_public, id: :game_open_to_public %>
+  </div>
+
+  <div class="field">
+    <%= form.label :message_to_public %>
+    <%= form.text_area :message_to_public, id: :game_message_to_public %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -20,4 +20,16 @@ class TeamPolicy < ApplicationPolicy
     user.admin_of_team?(record)
   end
 
+  def view_games?
+    user.is_in_team?(record)
+  end
+
+  def new_games?
+    user.admin_of_team?(record)
+  end
+
+  def create_games?
+    user.admin_of_team?(record)
+  end
+
 end
