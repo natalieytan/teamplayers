@@ -131,13 +131,25 @@
   </div>
   </div>
   </div>  
-     
 
+
+  </article>
+
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="A month's subscription"
+          data-amount="200"
+          data-locale="auto"></script>
+          
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Create Team ($1.00)"%>
   </div>
 <% end %>
 
+
+    <script>
+        document.getElementsByClassName("stripe-button-el")[0].style.display = 'none';
+    </script>
 
 <script type="text/javascript">
   $('#team_image').bind('change', function() {

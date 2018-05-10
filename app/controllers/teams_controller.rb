@@ -2,14 +2,12 @@ class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update, :destroy]
   before_action :auth_actions, only: [:update, :edit, :destroy]
   # GET /teams
-  # GET /teams.json
   def index
     @teams = current_user.teams
     @games = current_user.upcoming_games
   end
 
   # GET /teams/1
-  # GET /teams/1.json
   def show
     @team_players = TeamPlayer.joins(user: :profile).where(team: @team)
   end
@@ -24,15 +22,35 @@ class TeamsController < ApplicationController
   end
 
   # POST /teams
-  # POST /teams.json
   def create
     @team = Team.new(team_params)
     @team.owner = current_user
-    if @team.save
-      flash[:notice] = "Team was successfully created."
-      redirect_to @team
+    if @team.valid?
+      begin
+        customer = Stripe::Customer.create(
+          :email => params[:stripeEmail],
+          :card  => params[:stripeToken])
+  
+        charge = Stripe::Charge.create(
+          :customer    => customer.id,
+          :amount      => 200,
+          :description => 'Set up team on Teamplayers',
+          :currency    => 'AUD')
+  
+      rescue Stripe::CardError => e
+        charge_error = e.message
+      end
+      if charge_error
+        flash.now[:alert] = charge_error
+        render :new
+      else
+        @team.save
+        TeamMailer.confirmation(@team.owner, @team).deliver_now
+        flash[:notice] = "Successfully created your team."
+        redirect_to @team
+      end
     else
-      flash.now[:alert] = "Team was not successfully created. Please review errors."
+      flash.now[:error] = 'Unable to create team. Please review errors.'
       render :new
     end
   end
