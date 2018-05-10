@@ -122,5 +122,6 @@ Some 'nice to have' features (which are quite feaible) I wish to implement in th
 - this is required for image processing to work.
 3. `bundle install`
 4. `bin/rails db:migrate`
-5. `bin/rails s`
+5. `bin/rails db:seed`
+6. `bin/rails s`
 

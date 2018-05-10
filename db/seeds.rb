@@ -53,3 +53,14 @@ require 'csv'
 # # seed some data for futsalHQ
 # futsalhq = CSV.open("db/futsalhq.csv", headers: :first_row).map(&:to_h)
 # League.create!(futsalhq)
+
+#users = CSV.open("db/people.csv", headers: :first_row).map(&:to_h)
+
+# seed some users
+99.times do |n|
+  email = "example-#{n+1}@teamplayers.com"
+  password = "verysecurepassword"
+  User.create!(
+      email: email,
+      password: password)
+  end

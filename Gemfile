@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '~> 5.1.6'
+gem 'faker', '~> 1.8', '>= 1.8.7'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'stripe', '~> 3.13'
 gem 'devise', '~> 4.4', '>= 4.4.3'
