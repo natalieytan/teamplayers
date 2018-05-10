@@ -10,8 +10,6 @@ Rails.application.routes.draw do
   get '/myprofile/edit', to: 'profiles#edit'
   patch '/myprofile', to: 'profiles#update'
   resources :interests
-  resources :charges
-  
   resources :teams do
     resources :team_applications, shallow: true
     resources :games, only: [:index, :new, :create]
