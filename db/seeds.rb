@@ -94,24 +94,31 @@ require 'csv'
 
 
 # seed some teams
-prng = Random.new
-50.times do |n|
-  Team.create!({
-    owner_id: prng.rand(2..99),
-    sport_id: prng.rand(1..9),
-    skill_id: prng.rand(1..5),
-    gender_id: prng.rand(1..3),
-    day_id: prng.rand(1..7),
-    name: Faker::Team.name,
-    description: Faker::Seinfeld.quote,
-    street_number: Faker::Address.building_number,
-    route: Faker::Address.street_name,
-    locality: Faker::Address.city,
-    administrative_area: Faker::Address.state,
-    postal_code: Faker::Address.postcode,
-    country: Faker::Address.country,
-    latitude: Faker::Address.latitude,
-    longitude: Faker::Address.longitude,
+# prng = Random.new
+# 50.times do |n|
+#   Team.create!({
+#     owner_id: prng.rand(2..99),
+#     sport_id: prng.rand(1..9),
+#     skill_id: prng.rand(1..5),
+#     gender_id: prng.rand(1..3),
+#     day_id: prng.rand(1..7),
+#     name: Faker::Team.name,
+#     description: Faker::Seinfeld.quote,
+#     street_number: Faker::Address.building_number,
+#     route: Faker::Address.street_name,
+#     locality: Faker::Address.city,
+#     administrative_area: Faker::Address.state,
+#     postal_code: Faker::Address.postcode,
+#     country: Faker::Address.country,
+#     latitude: Faker::Address.latitude,
+#     longitude: Faker::Address.longitude,
 
-  })
+#   })
+# end
+
+
+# seed some players into teams 
+teams = Team.last(50)
+teams.each do |team|
+  team.users << User.last(70).sample(7)
 end
