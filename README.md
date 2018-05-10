@@ -136,3 +136,7 @@ Some 'nice to have' features (which are quite feaible) I wish to implement in th
 5. `bin/rails db:seed`
 6. `bin/rails s`
 
+# Image Credits
+[Izuddin Helmi Adnan - Unsplash](https://unsplash.com/photos/ndxwXAt0jpg)
+
+[Index page icons - Freepik](https://www.flaticon.com/authors/freepik)
