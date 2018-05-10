@@ -135,6 +135,7 @@
 
   </article>
 
+<% if pay %>
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
           data-description="Create a Team"
@@ -142,17 +143,18 @@
           data-locale="auto"
           ata-currency="aud"
           data-email="<%= current_user.email %>"></script>
-          
+  <% end %>
   <div class="actions">
-    <%= form.submit "Create Team ($1.00)"%>
+    <%= form.submit submit_text %>
   </div>
 <% end %>
 
 
+<% if pay %>
     <script>
         document.getElementsByClassName("stripe-button-el")[0].style.display = 'none';
     </script>
-
+  <% end %>
 <script type="text/javascript">
   $('#team_image').bind('change', function() {
     var size_in_megabytes = this.files[0].size/1024/1024;
