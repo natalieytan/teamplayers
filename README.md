@@ -5,6 +5,7 @@ Deployed: [https://teamplayers.herokuapp.com/](https://teamplayers.herokuapp.com
 Github: [https://github.com/natalieytan/teamplayers](https://github.com/natalieytan/teamplayers)
 
 # Contents
+
 - [Concept](#concept)
   * [Problem Statement:](#problem-statement-)
   * [Solution](#solution)
@@ -12,8 +13,16 @@ Github: [https://github.com/natalieytan/teamplayers](https://github.com/nataliey
   * [User stories](#user-stories)
   * [Sitemap planning](#sitemap-planning)
   * [My Scrumboard](#my-scrumboard)
-  * [Wireframes](#wireframes)
   * [ERD](#erd)
+  * [Wireframes](#wireframes)
+- [Plans for future development](#plans-for-future-development)
+  * [Plan for More features](#plan-for-more-features)
+  * [Involvement of Leagues & Clubs](#involvement-of-leagues---clubs)
+  * [Plans for financial sustainability](#plans-for-financial-sustainability)
+  * [Cleaner code](#cleaner-code)
+  * [Write more tests](#write-more-tests)
+- [Local installation instructions](#local-installation-instructions)
+
 
 # Concept
 ## Problem Statement:
@@ -26,6 +35,8 @@ Despite the increasing connectivity, which technology has brought, many sport te
 It is common for clubs needing players to fill their games to send desperate emails, texts and facebook messages from clubs. Meanwhile, players who are looking for games, or interested in joining the club, are often not the recipients of these messages, which have limited reach.
 
 ![So difficult to find a player...](/docs/assets/images/cantfindplayer.png)
+
+![So difficult to find a player...](/docs/assets/images/sohard.png)
 
 ## Solution
 The underlying problem is that while clubs are looking for players to fill their games, and players are looking for games, neither have a convenient means of connecting.
