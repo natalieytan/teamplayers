@@ -67,22 +67,27 @@ require 'csv'
 
 
 # seed somer profiles
-profiles = Profile.last(99)
+# profiles = Profile.last(99)
+# prng = Random.new
+# profiles.each do |profile|
+#   profile.update(
+#     {
+#       first_name: Faker::Name.first_name,
+#       last_name: Faker::Name.last_name,
+#       birth_date: Faker::Date.between(80.year.ago, 12.years.ago),
+#       gender: prng.rand(1..2),
+#       city:Faker::Address.city,
+#       description: Faker::MostInterestingManInTheWorld.quote,
+#       state: Faker::Address.state,
+#       country:Faker::Address.country,
+#       postcode: Faker::Address.postcode,
+#       latitude: Faker::Address.latitude,
+#       longitude:Faker::Address.longitude
+#     }
+#   )
+# end
+
+# seed some interests
 prng = Random.new
-profiles.each do |profile|
-  profile.update(
-    {
-      first_name: Faker::Name.first_name,
-      last_name: Faker::Name.last_name,
-      birth_date: Faker::Date.between(80.year.ago, 12.years.ago),
-      gender: prng.rand(1..2),
-      city:Faker::Address.city,
-      description: Faker::MostInterestingManInTheWorld.quote,
-      state: Faker::Address.state,
-      country:Faker::Address.country,
-      postcode: Faker::Address.postcode,
-      latitude: Faker::Address.latitude,
-      longitude:Faker::Address.longitude
-    }
-  )
-end
+users = User.last(99)
+users.each { |user| user.interests.create!(user: user, sport_id: prng.rand(1..9), skill: prng.rand(1..5)) }
