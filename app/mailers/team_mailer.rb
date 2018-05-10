@@ -8,7 +8,6 @@ class TeamMailer < ApplicationMailer
   def confirmation(team, user)
     @team = team
     @name = user.profile.full_name
-    default from: "noreply@teamplayers.herokuapp.com"
     mail to: user.email, subject: "Team created"
   end
 end
